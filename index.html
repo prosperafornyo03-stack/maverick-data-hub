@@ -1,6 +1,7 @@
 <h2>📝 Place Your Order</h2>
 
 <div class="package">
+
 <form onsubmit="sendOrder(); return false;">
 
 <label>Your Name:</label><br>
@@ -21,19 +22,22 @@
 <button type="submit">Submit Order</button>
 
 </form>
+
 </div>
 
 <script>
 function sendOrder() {
-  var name = document.getElementById("name").value;
-  var number = document.getElementById("number").value;
-  var pack = document.getElementById("package").value;
 
-  var message = "Hello Maverick Data Hub 👋🏾%0A%0A" +
-                "Name: " + name + "%0A" +
-                "Phone: " + number + "%0A" +
-                "Package: " + pack;
+var name = document.getElementById("name").value;
+var number = document.getElementById("number").value;
+var pack = document.getElementById("package").value;
 
-  window.open("https://wa.me/233546155096?text=" + message, "_blank");
+var message = "Hello Maverick Data Hub 👋🏾%0A%0A" +
+"Name: " + name + "%0A" +
+"Phone: " + number + "%0A" +
+"Package: " + pack;
+
+window.open("https://wa.me/233546155096?text=" + message, "_blank");
+
 }
 </script>
