@@ -69,6 +69,7 @@ border-radius:10px;
 </div>
 
 
+
 <div class="box offer">
 
 <h2>🔥 SPECIAL OFFER 🔥</h2>
@@ -85,37 +86,23 @@ border-radius:10px;
 
 
 <div class="box">
-
 <h3>1GB Data</h3>
-
 <p>GH₵5</p>
-
 <button>Buy Now</button>
-
 </div>
 
 
-
 <div class="box">
-
 <h3>5GB Data</h3>
-
 <p>GH₵20</p>
-
 <button>Buy Now</button>
-
 </div>
 
 
-
 <div class="box">
-
 <h3>10GB Data</h3>
-
 <p>GH₵35</p>
-
 <button>Buy Now</button>
-
 </div>
 
 
@@ -130,7 +117,22 @@ border-radius:10px;
 
 <br><br>
 
+
 <input id="phone" placeholder="Enter phone number">
+
+<br><br>
+
+
+<select id="network">
+
+<option>MTN</option>
+
+<option>Telecel</option>
+
+<option>AirtelTigo</option>
+
+</select>
+
 
 <br><br>
 
@@ -234,45 +236,8 @@ border-radius:10px;
 
 function order(){
 
-let name=document.getElementById("name").value;
+let name = document.getElementById("name").value;
 
-let phone=document.getElementById("phone").value;
+let phone = document.getElementById("phone").value;
 
-let pack=document.getElementById("package").value;
-
-
-let msg=
-
-"🚀 MAVERICK DATA HUB ORDER%0A%0A"+
-
-"👤 Customer Name: "+name+"%0A"+
-
-"📞 Phone: "+phone+"%0A"+
-
-"📦 Package: "+pack+"%0A%0A"+
-
-"✅ Please confirm this order.";
-
-
-window.open(
-
-"https://wa.me/233546155096?text="+msg,
-
-"_blank"
-
-);
-
-
-alert("✅ Order Sent Successfully!");
-
-}
-
-</script>
-
-
-
-<p>© 2026 Maverick Data Hub</p>
-
-
-</body>
-</html>
+let network =
