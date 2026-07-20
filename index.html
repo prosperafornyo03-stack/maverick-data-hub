@@ -25,7 +25,7 @@ body {
   font-size: 60px;
 }
 
-.package, .payment {
+.package, .payment, .reviews {
   background: white;
   padding: 25px;
   margin: 20px auto;
@@ -53,12 +53,6 @@ input, select {
   border: 1px solid #ccc;
 }
 
-.footer {
-  margin-top: 30px;
-  color: gray;
-}
-
-/* WhatsApp Button */
 .whatsapp {
   position: fixed;
   bottom: 20px;
@@ -73,6 +67,11 @@ input, select {
   align-items: center;
   justify-content: center;
   text-decoration: none;
+}
+
+.footer {
+  margin-top: 30px;
+  color: gray;
 }
 </style>
 
@@ -101,33 +100,27 @@ input, select {
 <div class="package">
 <h3>1GB Data</h3>
 <p>GH₵5</p>
-
-<a href="https://wa.me/233546155096?text=Hello%20Maverick%20Data%20Hub,%20I%20want%20to%20buy%201GB%20data">
+<a href="https://wa.me/233546155096">
 <button>Buy Now</button>
 </a>
-
 </div>
 
 
 <div class="package">
 <h3>5GB Data</h3>
 <p>GH₵20</p>
-
-<a href="https://wa.me/233546155096?text=Hello%20Maverick%20Data%20Hub,%20I%20want%20to%20buy%205GB%20data">
+<a href="https://wa.me/233546155096">
 <button>Buy Now</button>
 </a>
-
 </div>
 
 
 <div class="package">
 <h3>10GB Data</h3>
 <p>GH₵35</p>
-
-<a href="https://wa.me/233546155096?text=Hello%20Maverick%20Data%20Hub,%20I%20want%20to%20buy%2010GB%20data">
+<a href="https://wa.me/233546155096">
 <button>Buy Now</button>
 </a>
-
 </div>
 
 
@@ -158,48 +151,4 @@ input, select {
 
 <h2>💰 Payment Details</h2>
 
-<p><b>Network:</b> MTN Mobile Money</p>
-<p><b>Name:</b> Afornyo Prosper</p>
-<p><b>Number:</b> 0546155096</p>
-
-<p>After payment, send screenshot on WhatsApp.</p>
-
-</div>
-
-
-<script>
-function sendOrder(){
-
-let name = document.getElementById("name").value;
-let phone = document.getElementById("phone").value;
-let pack = document.getElementById("package").value;
-
-let message =
-"Hello Maverick Data Hub 👋🏾%0A%0A" +
-"Name: " + name + "%0A" +
-"Phone: " + phone + "%0A" +
-"Package: " + pack;
-
-window.open(
-"https://wa.me/233546155096?text=" + message,
-"_blank"
-);
-
-}
-</script>
-
-
-<a href="https://wa.me/233546155096?text=Hello%20Maverick%20Data%20Hub,%20I%20need%20help"
-target="_blank"
-class="whatsapp">
-💬
-</a>
-
-
-<div class="footer">
-<p>© 2026 Maverick Data Hub</p>
-</div>
-
-
-</body>
-</html>
+<p><b>Network
