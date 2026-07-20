@@ -199,6 +199,77 @@ Submit Order
 
 
 <script>
+async function sendOrder(){
+
+let file = document.getElementById("image").files[0];
+
+if(!file){
+alert("Please upload payment screenshot");
+return;
+}
+
+let form = new FormData();
+
+form.append("file", file);
+form.append("upload_preset", "mdh_payment_upload");
+
+
+try {
+
+let upload = await fetch(
+"https://api.cloudinary.com/v1_1/znemrfzm/image/upload",
+{
+method:"POST",
+body:form
+}
+);
+
+
+let data = await upload.json();
+
+console.log(data);
+
+
+if(data.secure_url){
+
+alert("Screenshot uploaded successfully!");
+
+let message =
+`🚀 Maverick Data Hub Order
+
+👤 Name: ${document.getElementById("name").value}
+
+📱 Phone: ${document.getElementById("phone").value}
+
+📶 Network: ${document.getElementById("network").value}
+
+📦 Bundle: ${document.getElementById("bundle").value}
+
+📸 Screenshot:
+${data.secure_url}`;
+
+
+window.open(
+"https://wa.me/233546155096?text=" + encodeURIComponent(message)
+);
+
+
+}else{
+
+alert("Cloudinary Error: " + JSON.stringify(data));
+
+}
+
+}
+
+catch(error){
+
+alert("Error: " + error.message);
+
+}
+
+}
+</script>
 
 async function sendOrder(){
 
