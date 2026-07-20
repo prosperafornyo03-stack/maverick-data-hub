@@ -10,7 +10,6 @@ font-family:Arial,sans-serif;
 background:#f0f4ff;
 text-align:center;
 padding:15px;
-margin:0;
 }
 
 .header{
@@ -26,7 +25,7 @@ padding:20px;
 margin:20px auto;
 border-radius:20px;
 max-width:380px;
-box-shadow:0 4px 10px rgba(0,0,0,.1);
+box-shadow:0 3px 10px #ccc;
 }
 
 button{
@@ -35,7 +34,6 @@ color:white;
 padding:12px 25px;
 border:0;
 border-radius:15px;
-font-size:16px;
 }
 
 input,select{
@@ -43,17 +41,12 @@ width:85%;
 padding:12px;
 margin:8px;
 border-radius:10px;
-border:1px solid #ccc;
 }
 
 .price{
-color:#0066ff;
 font-size:25px;
+color:#0066ff;
 font-weight:bold;
-}
-
-.offer{
-background:#fff3cd;
 }
 
 .whatsapp{
@@ -72,7 +65,6 @@ justify-content:center;
 text-decoration:none;
 }
 </style>
-
 </head>
 
 <body>
@@ -85,7 +77,7 @@ text-decoration:none;
 </div>
 
 
-<div class="box offer">
+<div class="box">
 <h2>🔥 SPECIAL OFFER 🔥</h2>
 <p>Get affordable data bundles today!</p>
 <p>⚡ Fast delivery • 💯 Trusted service</p>
@@ -98,35 +90,28 @@ text-decoration:none;
 <div class="box">
 <h3>1GB Data</h3>
 <p class="price">GH₵5</p>
-<button onclick="choose('1GB Data','GH₵5')">Buy Now</button>
+<button onclick="pick('1GB Data','GH₵5')">Buy Now</button>
 </div>
 
 
 <div class="box">
 <h3>2GB Data</h3>
 <p class="price">GH₵10</p>
-<button onclick="choose('2GB Data','GH₵10')">Buy Now</button>
+<button onclick="pick('2GB Data','GH₵10')">Buy Now</button>
 </div>
 
 
 <div class="box">
 <h3>5GB Data</h3>
 <p class="price">GH₵20</p>
-<button onclick="choose('5GB Data','GH₵20')">Buy Now</button>
+<button onclick="pick('5GB Data','GH₵20')">Buy Now</button>
 </div>
 
 
 <div class="box">
 <h3>10GB Data</h3>
 <p class="price">GH₵35</p>
-<button onclick="choose('10GB Data','GH₵35')">Buy Now</button>
-</div>
-
-
-<div class="box">
-<h3>15GB Data</h3>
-<p class="price">GH₵50</p>
-<button onclick="choose('15GB Data','GH₵50')">Buy Now</button>
+<button onclick="pick('10GB Data','GH₵35')">Buy Now</button>
 </div>
 
 
@@ -151,24 +136,20 @@ text-decoration:none;
 <option>2GB Data</option>
 <option>5GB Data</option>
 <option>10GB Data</option>
-<option>15GB Data</option>
 </select>
 
 
-<p id="amount"><b>Price: GH₵5</b></p>
+<p id="price" class="price">GH₵5</p>
 
 
-<h3>📸 Upload Payment Screenshot</h3>
-
-<input type="file" id="screenshot" accept="image/*">
+<input type="file" id="shot" accept="image/*">
 
 
 <br><br>
 
-<button onclick="order()">Submit Order</button>
+<button onclick="sendOrder()">Submit Order</button>
 
 </div>
-
 
 
 <div class="box">
@@ -176,15 +157,10 @@ text-decoration:none;
 <h2>💰 Payment Details</h2>
 
 <p>Network: MTN Mobile Money</p>
-
 <p>Name: Afornyo Prosper</p>
-
 <p>Number: 0546155096</p>
 
-<p>After payment, send screenshot on WhatsApp.</p>
-
 </div>
-
 
 
 <div class="box">
@@ -198,28 +174,13 @@ text-decoration:none;
 </div>
 
 
-
 <div class="box">
 
 <h2>⭐ Why Choose Maverick Data Hub?</h2>
 
 <p>✅ Fast and reliable data bundles</p>
-
 <p>✅ Affordable prices</p>
-
 <p>✅ Quick WhatsApp support</p>
-
-</div>
-
-
-
-<div class="box">
-
-<h2>💬 Customer Reviews</h2>
-
-<p>⭐⭐⭐⭐⭐</p>
-
-<p>Fast service and reliable data.</p>
 
 </div>
 
@@ -227,78 +188,60 @@ text-decoration:none;
 <p>© 2026 Maverick Data Hub</p>
 
 
-<a class="whatsapp" href="https://wa.me/233546155096">
-💬
-</a>
-
+<a class="whatsapp" href="https://wa.me/233546155096">💬</a>
 
 
 <script>
 
-function choose(bundle,price){
+function pick(bundle,price){
 
 document.getElementById("bundle").value=bundle;
-
-document.getElementById("amount").innerHTML=
-"<b>Price: "+price+"</b>";
+document.getElementById("price").innerHTML=price;
 
 }
 
 
-
-document.getElementById("bundle").onchange=function(){
-
-let prices={
-"1GB Data":"GH₵5",
-"2GB Data":"GH₵10",
-"5GB Data":"GH₵20",
-"10GB Data":"GH₵35",
-"15GB Data":"GH₵50"
-};
-
-
-document.getElementById("amount").innerHTML=
-"<b>Price: "+prices[this.value]+"</b>";
-
-};
-
-
-
-function order(){
+function sendOrder(){
 
 let name=document.getElementById("name").value;
 let phone=document.getElementById("phone").value;
 let network=document.getElementById("network").value;
 let bundle=document.getElementById("bundle").value;
-let price=document.getElementById("amount").innerText;
+let price=document.getElementById("price").innerHTML;
+let file=document.getElementById("shot").files.length;
 
 
 if(name=="" || phone==""){
-alert("Please enter your name and phone number");
+alert("Enter your name and phone number");
 return;
 }
 
 
-let message=
+if(file==0){
+alert("Please select your payment screenshot");
+return;
+}
+
+
+let msg=
 
 "🚀 Maverick Data Hub Order%0A%0A"+
 "👤 Name: "+name+"%0A"+
 "📱 Phone: "+phone+"%0A"+
 "📶 Network: "+network+"%0A"+
 "📦 Bundle: "+bundle+"%0A"+
-"💰 "+price+"%0A%0A"+
-"Payment screenshot selected.";
+"💰 Price: "+price+"%0A%0A"+
+"📸 Payment screenshot selected";
 
 
 window.open(
-"https://wa.me/233546155096?text="+message,
+"https://wa.me/233546155096?text="+msg,
 "_blank"
 );
 
 }
 
 </script>
-
 
 </body>
 </html>
