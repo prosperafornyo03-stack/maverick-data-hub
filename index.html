@@ -34,10 +34,6 @@ body {
   box-shadow: 0 5px 15px rgba(0,0,0,0.15);
 }
 
-.package h3 {
-  color: #0066ff;
-}
-
 button {
   background: #0066ff;
   color: white;
@@ -46,27 +42,18 @@ button {
   border-radius: 10px;
 }
 
+.whatsapp-btn {
+  background: #25D366;
+  color: white;
+  margin: 20px;
+  font-size: 18px;
+}
+
 input, select {
   width: 80%;
   padding: 12px;
   border-radius: 10px;
   border: 1px solid #ccc;
-}
-
-.whatsapp {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #25D366;
-  color: white;
-  font-size: 35px;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
 }
 
 .footer {
@@ -127,15 +114,15 @@ input, select {
 
 <h2>📝 Place Your Order</h2>
 
-<input id="name" placeholder="Enter your name">
+<input placeholder="Enter your name">
 
 <br><br>
 
-<input id="phone" placeholder="Enter phone number">
+<input placeholder="Enter phone number">
 
 <br><br>
 
-<select id="package">
+<select>
 <option>1GB - GH₵5</option>
 <option>5GB - GH₵20</option>
 <option>10GB - GH₵35</option>
@@ -143,7 +130,8 @@ input, select {
 
 <br><br>
 
-<button onclick="sendOrder()">Submit Order</button>
+<button>Submit Order</button>
+
 
 <hr>
 
@@ -177,14 +165,21 @@ input, select {
 <h2>💬 Customer Reviews</h2>
 
 <p>⭐⭐⭐⭐⭐</p>
+
 <p>Fast service and reliable data.</p>
 
 </div>
 
 
-<script>
-function sendOrder(){
+<a href="https://wa.me/233546155096?text=Hello%20Maverick%20Data%20Hub,%20I%20need%20help" target="_blank">
+<button class="whatsapp-btn">💬 Chat with us on WhatsApp</button>
+</a>
 
-let name = document.getElementById("name").value;
-let phone = document.getElementById("phone").value;
-let pack = document.getElementById("
+
+<div class="footer">
+<p>© 2026 Maverick Data Hub</p>
+</div>
+
+
+</body>
+</html>
