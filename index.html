@@ -26,6 +26,10 @@ border-radius:15px;
 max-width:350px;
 }
 
+.offer{
+background:#fff3cd;
+}
+
 button{
 background:#0066ff;
 color:white;
@@ -44,12 +48,7 @@ padding:12px;
 border-radius:10px;
 }
 
-.status{
-text-align:left;
-font-size:17px;
-}
 </style>
-
 </head>
 
 <body>
@@ -70,34 +69,62 @@ font-size:17px;
 </div>
 
 
+<div class="box offer">
+
+<h2>🔥 SPECIAL OFFER 🔥</h2>
+
+<p><b>Get affordable data bundles today!</b></p>
+
+<p>⚡ Fast delivery • 💯 Trusted service</p>
+
+</div>
+
+
+
 <h2>Our Data Packages 📶</h2>
 
 
 <div class="box">
+
 <h3>1GB Data</h3>
+
 <p>GH₵5</p>
+
 <button>Buy Now</button>
+
 </div>
 
 
+
 <div class="box">
+
 <h3>5GB Data</h3>
+
 <p>GH₵20</p>
+
 <button>Buy Now</button>
+
 </div>
+
 
 
 <div class="box">
+
 <h3>10GB Data</h3>
+
 <p>GH₵35</p>
+
 <button>Buy Now</button>
+
 </div>
+
 
 
 
 <div class="box">
 
 <h2>📝 Place Your Order</h2>
+
 
 <input id="name" placeholder="Enter your name">
 
@@ -107,27 +134,32 @@ font-size:17px;
 
 <br><br>
 
+
 <select id="package">
 
 <option>1GB - GH₵5</option>
+
 <option>5GB - GH₵20</option>
+
 <option>10GB - GH₵35</option>
 
 </select>
 
+
 <br><br>
+
 
 <button onclick="order()">Submit Order</button>
 
+
 </div>
+
 
 
 
 <div class="box">
 
 <h2>📦 Order Status</h2>
-
-<div class="status">
 
 <p>🟡 Pending Payment</p>
 
@@ -137,7 +169,6 @@ font-size:17px;
 
 </div>
 
-</div>
 
 
 
@@ -157,13 +188,45 @@ font-size:17px;
 
 
 
+
+<div class="box">
+
+<h2>⭐ Why Choose Maverick Data Hub?</h2>
+
+<p>✅ Fast and reliable data bundles</p>
+
+<p>✅ Affordable prices</p>
+
+<p>✅ Quick WhatsApp support</p>
+
+</div>
+
+
+
+
+<div class="box">
+
+<h2>💬 Customer Reviews</h2>
+
+<p>⭐⭐⭐⭐⭐</p>
+
+<p>Fast service and reliable data.</p>
+
+</div>
+
+
+
+
 <a href="https://wa.me/233546155096">
 
 <button class="whatsapp">
+
 💬 Chat with us on WhatsApp
+
 </button>
 
 </a>
+
 
 
 
@@ -179,16 +242,24 @@ let pack=document.getElementById("package").value;
 
 
 let msg=
+
 "🚀 MAVERICK DATA HUB ORDER%0A%0A"+
+
 "👤 Customer Name: "+name+"%0A"+
+
 "📞 Phone: "+phone+"%0A"+
+
 "📦 Package: "+pack+"%0A%0A"+
+
 "✅ Please confirm this order.";
 
 
 window.open(
+
 "https://wa.me/233546155096?text="+msg,
+
 "_blank"
+
 );
 
 
@@ -199,8 +270,9 @@ alert("✅ Order Sent Successfully!");
 </script>
 
 
+
 <p>© 2026 Maverick Data Hub</p>
 
 
 </body>
-  </html>
+</html>
