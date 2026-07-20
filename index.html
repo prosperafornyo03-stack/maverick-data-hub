@@ -20,10 +20,6 @@ padding:30px;
 border-radius:20px;
 }
 
-.logo{
-font-size:45px;
-}
-
 .box{
 background:white;
 padding:20px;
@@ -37,14 +33,9 @@ button{
 background:#0066ff;
 color:white;
 padding:12px 25px;
-border:none;
+border:0;
 border-radius:15px;
 font-size:16px;
-cursor:pointer;
-}
-
-button:hover{
-background:#0047b3;
 }
 
 input,select{
@@ -55,10 +46,6 @@ border-radius:10px;
 border:1px solid #ccc;
 }
 
-.package{
-font-size:18px;
-}
-
 .price{
 color:#0066ff;
 font-size:25px;
@@ -67,10 +54,6 @@ font-weight:bold;
 
 .offer{
 background:#fff3cd;
-}
-
-.review{
-font-style:italic;
 }
 
 .whatsapp{
@@ -89,13 +72,13 @@ justify-content:center;
 text-decoration:none;
 }
 </style>
+
 </head>
 
 <body>
 
 <div class="header">
-<div class="logo">🚀</div>
-<h1>Maverick Data Hub</h1>
+<h1>🚀 Maverick Data Hub</h1>
 <p>Fast • Affordable • Reliable Data Bundles</p>
 <p>📱 MTN • Telecel • AirtelTigo</p>
 <p>💯 Your trusted data plug</p>
@@ -112,35 +95,35 @@ text-decoration:none;
 <h2>Our Data Packages 📶</h2>
 
 
-<div class="box package">
+<div class="box">
 <h3>1GB Data</h3>
 <p class="price">GH₵5</p>
 <button onclick="choose('1GB Data','GH₵5')">Buy Now</button>
 </div>
 
 
-<div class="box package">
+<div class="box">
 <h3>2GB Data</h3>
 <p class="price">GH₵10</p>
 <button onclick="choose('2GB Data','GH₵10')">Buy Now</button>
 </div>
 
 
-<div class="box package">
+<div class="box">
 <h3>5GB Data</h3>
 <p class="price">GH₵20</p>
 <button onclick="choose('5GB Data','GH₵20')">Buy Now</button>
 </div>
 
 
-<div class="box package">
+<div class="box">
 <h3>10GB Data</h3>
 <p class="price">GH₵35</p>
 <button onclick="choose('10GB Data','GH₵35')">Buy Now</button>
 </div>
 
 
-<div class="box package">
+<div class="box">
 <h3>15GB Data</h3>
 <p class="price">GH₵50</p>
 <button onclick="choose('15GB Data','GH₵50')">Buy Now</button>
@@ -174,6 +157,14 @@ text-decoration:none;
 
 <p id="amount"><b>Price: GH₵5</b></p>
 
+
+<h3>📸 Upload Payment Screenshot</h3>
+
+<input type="file" id="screenshot" accept="image/*">
+
+
+<br><br>
+
 <button onclick="order()">Submit Order</button>
 
 </div>
@@ -201,7 +192,113 @@ text-decoration:none;
 <h2>📦 Order Status</h2>
 
 <p>🟡 Pending Payment</p>
-
 <p>🔵 Payment Confirmed</p>
+<p>🟢 Data Delivered</p>
 
-<p>🟢 Data
+</div>
+
+
+
+<div class="box">
+
+<h2>⭐ Why Choose Maverick Data Hub?</h2>
+
+<p>✅ Fast and reliable data bundles</p>
+
+<p>✅ Affordable prices</p>
+
+<p>✅ Quick WhatsApp support</p>
+
+</div>
+
+
+
+<div class="box">
+
+<h2>💬 Customer Reviews</h2>
+
+<p>⭐⭐⭐⭐⭐</p>
+
+<p>Fast service and reliable data.</p>
+
+</div>
+
+
+<p>© 2026 Maverick Data Hub</p>
+
+
+<a class="whatsapp" href="https://wa.me/233546155096">
+💬
+</a>
+
+
+
+<script>
+
+function choose(bundle,price){
+
+document.getElementById("bundle").value=bundle;
+
+document.getElementById("amount").innerHTML=
+"<b>Price: "+price+"</b>";
+
+}
+
+
+
+document.getElementById("bundle").onchange=function(){
+
+let prices={
+"1GB Data":"GH₵5",
+"2GB Data":"GH₵10",
+"5GB Data":"GH₵20",
+"10GB Data":"GH₵35",
+"15GB Data":"GH₵50"
+};
+
+
+document.getElementById("amount").innerHTML=
+"<b>Price: "+prices[this.value]+"</b>";
+
+};
+
+
+
+function order(){
+
+let name=document.getElementById("name").value;
+let phone=document.getElementById("phone").value;
+let network=document.getElementById("network").value;
+let bundle=document.getElementById("bundle").value;
+let price=document.getElementById("amount").innerText;
+
+
+if(name=="" || phone==""){
+alert("Please enter your name and phone number");
+return;
+}
+
+
+let message=
+
+"🚀 Maverick Data Hub Order%0A%0A"+
+"👤 Name: "+name+"%0A"+
+"📱 Phone: "+phone+"%0A"+
+"📶 Network: "+network+"%0A"+
+"📦 Bundle: "+bundle+"%0A"+
+"💰 "+price+"%0A%0A"+
+"Payment screenshot selected.";
+
+
+window.open(
+"https://wa.me/233546155096?text="+message,
+"_blank"
+);
+
+}
+
+</script>
+
+
+</body>
+</html>
