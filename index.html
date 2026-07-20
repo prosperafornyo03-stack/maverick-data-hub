@@ -69,7 +69,6 @@ border-radius:10px;
 </div>
 
 
-
 <div class="box offer">
 
 <h2>🔥 SPECIAL OFFER 🔥</h2>
@@ -126,9 +125,7 @@ border-radius:10px;
 <select id="network">
 
 <option>MTN</option>
-
 <option>Telecel</option>
-
 <option>AirtelTigo</option>
 
 </select>
@@ -137,18 +134,19 @@ border-radius:10px;
 <br><br>
 
 
-<select id="package">
+<select id="package" onchange="showPrice()">
 
-<option>1GB - GH₵5</option>
-
-<option>5GB - GH₵20</option>
-
-<option>10GB - GH₵35</option>
+<option value="1GB">1GB Data</option>
+<option value="5GB">5GB Data</option>
+<option value="10GB">10GB Data</option>
 
 </select>
 
 
 <br><br>
+
+
+<p id="price"><b>Price: GH₵5</b></p>
 
 
 <button onclick="order()">Submit Order</button>
@@ -193,95 +191,4 @@ border-radius:10px;
 
 <div class="box">
 
-<h2>⭐ Why Choose Maverick Data Hub?</h2>
-
-<p>✅ Fast and reliable data bundles</p>
-
-<p>✅ Affordable prices</p>
-
-<p>✅ Quick WhatsApp support</p>
-
-</div>
-
-
-
-
-<div class="box">
-
-<h2>💬 Customer Reviews</h2>
-
-<p>⭐⭐⭐⭐⭐</p>
-
-<p>Fast service and reliable data.</p>
-
-</div>
-
-
-
-
-<a href="https://wa.me/233546155096">
-
-<button class="whatsapp">
-
-💬 Chat with us on WhatsApp
-
-</button>
-
-</a>
-
-
-
-
-<script>
-
-function order(){
-
-let name = document.getElementById("name").value;
-
-let phone = document.getElementById("phone").value;
-
-let network = document.getElementById("network").value;
-
-let pack = document.getElementById("package").value;
-
-
-
-let msg =
-
-"🚀 MAVERICK DATA HUB ORDER%0A%0A"+
-
-"👤 Customer Name: "+name+"%0A"+
-
-"📞 Phone: "+phone+"%0A"+
-
-"📱 Network: "+network+"%0A"+
-
-"📦 Package: "+pack+"%0A%0A"+
-
-"✅ Please confirm this order.";
-
-
-
-window.open(
-
-"https://wa.me/233546155096?text="+msg,
-
-"_blank"
-
-);
-
-
-alert("✅ Order Sent Successfully!");
-
-}
-
-</script>
-
-
-
-
-<p>© 2026 Maverick Data Hub</p>
-
-
-</body>
-</html>
+<h2>⭐ Why Choose Maverick Data
