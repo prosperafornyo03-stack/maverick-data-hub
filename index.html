@@ -82,43 +82,43 @@ input,select{
 <div class="box">
 <h3>1GB Data</h3>
 <h2>GH₵5</h2>
-<button>Buy Now</button>
+<button onclick="selectBundle('1GB Data','GH₵5')">Buy Now</button>
 </div>
 
 <div class="box">
 <h3>5GB Data</h3>
 <h2>GH₵20</h2>
-<button>Buy Now</button>
+<button onclick="selectBundle('5GB Data','GH₵20')">Buy Now</button>
 </div>
 
 <div class="box">
 <h3>10GB Data</h3>
 <h2>GH₵35</h2>
-<button>Buy Now</button>
+<button onclick="selectBundle('10GB Data','GH₵35')">Buy Now</button>
 </div>
 
 <div class="box">
 <h2>📝 Place Your Order</h2>
 
-<input type="text" placeholder="Enter your name"><br>
+<input type="text" id="name" placeholder="Enter your name"><br>
 
-<input type="tel" placeholder="Enter phone number"><br>
+<input type="tel" id="phone" placeholder="Enter phone number"><br>
 
-<select>
+<select id="network">
 <option>MTN</option>
 <option>Telecel</option>
 <option>AirtelTigo</option>
 </select><br>
 
-<select>
+<select id="bundle">
 <option>1GB Data</option>
 <option>5GB Data</option>
 <option>10GB Data</option>
 </select>
 
-<p><b>Price: GH₵5</b></p>
+<p id="price"><b>Price: GH₵5</b></p>
 
-<button>Submit Order</button>
+<button onclick="sendOrder()">Submit Order</button>
 </div>
 
 <div class="box">
@@ -152,6 +152,51 @@ input,select{
 <p>© 2026 Maverick Data Hub</p>
 
 <a href="https://wa.me/233546155096" class="float-whatsapp">💬</a>
+
+<script>
+function selectBundle(bundle, price){
+    document.getElementById("bundle").value = bundle;
+    document.getElementById("price").innerHTML = "<b>Price: " + price + "</b>";
+    window.scrollTo({
+        top: document.getElementById("bundle").offsetTop - 100,
+        behavior: "smooth"
+    });
+}
+
+document.getElementById("bundle").addEventListener("change", function(){
+    let prices = {
+        "1GB Data":"GH₵5",
+        "5GB Data":"GH₵20",
+        "10GB Data":"GH₵35"
+    };
+    document.getElementById("price").innerHTML =
+        "<b>Price: " + prices[this.value] + "</b>";
+});
+
+function sendOrder(){
+    let name = document.getElementById("name").value;
+    let phone = document.getElementById("phone").value;
+    let network = document.getElementById("network").value;
+    let bundle = document.getElementById("bundle").value;
+    let price = document.getElementById("price").innerText.replace("Price: ","");
+
+    let message =
+`🚀 *Maverick Data Hub Order*
+
+👤 Name: ${name}
+📱 Phone: ${phone}
+📶 Network: ${network}
+📦 Bundle: ${bundle}
+💰 ${price}
+
+I have placed my order.`;
+
+    window.open(
+        "https://wa.me/233546155096?text=" + encodeURIComponent(message),
+        "_blank"
+    );
+}
+</script>
 
 </body>
 </html>
