@@ -21,10 +21,8 @@ body {
   border-radius: 15px;
 }
 
-.header img {
-  width: 80px;
-  border-radius: 50%;
-  margin-bottom: 10px;
+.logo {
+  font-size: 60px;
 }
 
 .package, .payment {
@@ -67,7 +65,7 @@ input, select {
 
 <div class="header">
 
-<img src="https://cdn-icons-png.flaticon.com/512/1041/1041887.png" alt="Logo">
+<div class="logo">📶</div>
 
 <h1>🚀 Maverick Data Hub</h1>
 
@@ -86,27 +84,21 @@ input, select {
 <div class="package">
 <h3>1GB Data</h3>
 <p>GH₵5</p>
-<a href="https://wa.me/233546155096">
 <button>Buy Now</button>
-</a>
 </div>
 
 
 <div class="package">
 <h3>5GB Data</h3>
 <p>GH₵20</p>
-<a href="https://wa.me/233546155096">
 <button>Buy Now</button>
-</a>
 </div>
 
 
 <div class="package">
 <h3>10GB Data</h3>
 <p>GH₵35</p>
-<a href="https://wa.me/233546155096">
 <button>Buy Now</button>
-</a>
 </div>
 
 
@@ -114,17 +106,15 @@ input, select {
 
 <h2>📝 Place Your Order</h2>
 
-<form onsubmit="sendOrder(); return false;">
-
-<input id="name" placeholder="Enter your name" required>
+<input placeholder="Enter your name">
 
 <br><br>
 
-<input id="phone" placeholder="Enter phone number" required>
+<input placeholder="Enter phone number">
 
 <br><br>
 
-<select id="package">
+<select>
 <option>1GB - GH₵5</option>
 <option>5GB - GH₵20</option>
 <option>10GB - GH₵35</option>
@@ -132,13 +122,10 @@ input, select {
 
 <br><br>
 
-<button type="submit">Submit Order</button>
-
-</form>
+<button>Submit Order</button>
 
 
 <hr>
-
 
 <h2>💰 Payment Details</h2>
 
@@ -149,28 +136,6 @@ input, select {
 <p>After payment, send screenshot on WhatsApp.</p>
 
 </div>
-
-
-<script>
-function sendOrder(){
-
-let name = document.getElementById("name").value;
-let phone = document.getElementById("phone").value;
-let pack = document.getElementById("package").value;
-
-let msg =
-"Hello Maverick Data Hub 👋🏾%0A%0A" +
-"Name: " + name + "%0A" +
-"Phone: " + phone + "%0A" +
-"Package: " + pack;
-
-window.open(
-"https://wa.me/233546155096?text=" + msg,
-"_blank"
-);
-
-}
-</script>
 
 
 <div class="footer">
