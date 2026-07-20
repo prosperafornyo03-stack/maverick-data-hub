@@ -10,7 +10,7 @@ body {
   text-align: center;
 }
 
-h1 {
+header {
   background: black;
   color: white;
   padding: 20px;
@@ -32,6 +32,13 @@ button {
   font-size: 16px;
 }
 
+input, select {
+  width: 80%;
+  padding: 10px;
+  margin: 8px;
+  border-radius: 8px;
+}
+
 a {
   text-decoration: none;
 }
@@ -41,40 +48,63 @@ a {
 
 <body>
 
+<header>
 <h1>🔥 Maverick Data Hub 🔥</h1>
+<p>Fast & Affordable Data Bundles Ghana 🇬🇭</p>
+</header>
 
-<p>Fast & Affordable Data Bundles in Ghana 🇬🇭</p>
-
-<div class="box">
-<h2>🟡 MTN Data Bundles</h2>
-<p>1GB - GH₵5</p>
-<p>2GB - GH₵10</p>
-<p>5GB - GH₵25</p>
-
-<a href="https://wa.me/233546155096">
-<button>Buy MTN</button>
-</a>
-</div>
 
 <div class="box">
-<h2>🔴 Telecel Data Bundles</h2>
-<p>1GB - GH₵5</p>
-<p>5GB - GH₵25</p>
+<h2>📱 Buy Data</h2>
+
+<input placeholder="Your Name">
+
+<input placeholder="Phone Number">
+
+<select>
+<option>Select Network</option>
+<option>MTN</option>
+<option>Telecel</option>
+<option>AirtelTigo</option>
+</select>
+
+<select>
+<option>Select Bundle</option>
+<option>1GB - GH₵5</option>
+<option>2GB - GH₵10</option>
+<option>5GB - GH₵25</option>
+</select>
+
+<br>
 
 <a href="https://wa.me/233546155096">
-<button>Buy Telecel</button>
+<button>Order on WhatsApp</button>
 </a>
+
 </div>
+
 
 <div class="box">
-<h2>🔵 AirtelTigo Data Bundles</h2>
-<p>1GB - GH₵5</p>
-<p>5GB - GH₵25</p>
+<h2>💰 Payment</h2>
 
-<a href="https://wa.me/233546155096">
-<button>Buy AirtelTigo</button>
-</a>
+<p>Send payment through Mobile Money</p>
+<p>MTN MoMo: 0546155096</p>
+<p>Name: Maverick</p>
+
 </div>
+
+
+<div class="box">
+<h2>📦 Available Bundles</h2>
+
+<p>🟡 MTN: 1GB - GH₵5 | 5GB - GH₵25</p>
+
+<p>🔴 Telecel: 1GB - GH₵5 | 5GB - GH₵25</p>
+
+<p>🔵 AirtelTigo: 1GB - GH₵5 | 5GB - GH₵25</p>
+
+</div>
+
 
 </body>
 </html>
