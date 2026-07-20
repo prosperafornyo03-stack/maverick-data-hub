@@ -71,33 +71,27 @@ border-radius:10px;
 <div class="box">
 <h3>1GB Data</h3>
 <p>GH₵5</p>
-
 <a href="https://wa.me/233546155096">
 <button>Buy Now</button>
 </a>
-
 </div>
 
 
 <div class="box">
 <h3>5GB Data</h3>
 <p>GH₵20</p>
-
 <a href="https://wa.me/233546155096">
 <button>Buy Now</button>
 </a>
-
 </div>
 
 
 <div class="box">
 <h3>10GB Data</h3>
 <p>GH₵35</p>
-
 <a href="https://wa.me/233546155096">
 <button>Buy Now</button>
 </a>
-
 </div>
 
 
@@ -106,16 +100,13 @@ border-radius:10px;
 
 <h2>📝 Place Your Order</h2>
 
-
 <input id="name" placeholder="Enter your name">
 
 <br><br>
 
-
 <input id="phone" placeholder="Enter phone number">
 
 <br><br>
-
 
 <select id="package">
 
@@ -127,9 +118,7 @@ border-radius:10px;
 
 </select>
 
-
 <br><br>
-
 
 <button onclick="order()">Submit Order</button>
 
@@ -146,7 +135,6 @@ border-radius:10px;
 <p>Number: 0546155096</p>
 
 <p>After payment, send screenshot on WhatsApp.</p>
-
 
 </div>
 
@@ -184,4 +172,53 @@ border-radius:10px;
 💬 Chat with us on WhatsApp
 </button>
 
-</a
+</a>
+
+
+
+<script>
+
+function order(){
+
+let name = document.getElementById("name").value;
+
+let phone = document.getElementById("phone").value;
+
+let pack = document.getElementById("package").value;
+
+
+let msg =
+
+"🚀 MAVERICK DATA HUB ORDER%0A%0A" +
+
+"👤 Customer Name: " + name + "%0A" +
+
+"📞 Phone: " + phone + "%0A" +
+
+"📦 Package: " + pack + "%0A%0A" +
+
+"✅ Please confirm this order.";
+
+
+window.open(
+"https://wa.me/233546155096?text=" + msg,
+"_blank"
+);
+
+
+alert(
+"✅ Order Sent Successfully!\n\nThank you for choosing Maverick Data Hub 🚀"
+);
+
+
+}
+
+</script>
+
+
+
+<p>© 2026 Maverick Data Hub</p>
+
+
+</body>
+</html>
