@@ -38,17 +38,31 @@ border:0;
 border-radius:10px;
 }
 
-.whatsapp{
-background:#25D366;
-}
-
 input,select{
 width:80%;
 padding:12px;
 border-radius:10px;
 }
 
+.float-whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:white;
+font-size:30px;
+width:60px;
+height:60px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+text-decoration:none;
+box-shadow:0 5px 15px rgba(0,0,0,0.3);
+}
+
 </style>
+
 </head>
 
 <body>
@@ -106,21 +120,17 @@ border-radius:10px;
 
 
 
-
 <div class="box">
 
 <h2>📝 Place Your Order</h2>
-
 
 <input id="name" placeholder="Enter your name">
 
 <br><br>
 
-
 <input id="phone" placeholder="Enter phone number">
 
 <br><br>
-
 
 <select id="network">
 
@@ -151,7 +161,6 @@ border-radius:10px;
 
 <button onclick="order()">Submit Order</button>
 
-
 </div>
 
 
@@ -180,15 +189,4 @@ border-radius:10px;
 
 <p>Name: Afornyo Prosper</p>
 
-<p>Number: 0546155096</p>
-
-<p>After payment, send screenshot on WhatsApp.</p>
-
-</div>
-
-
-
-
-<div class="box">
-
-<h2>⭐ Why Choose Maverick Data
+<p>Number:
