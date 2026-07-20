@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Maverick Data Hub</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
 body{
-font-family:Arial,sans-serif;
+font-family:Arial;
 background:#f5f5f5;
 text-align:center;
 padding:20px;
@@ -26,42 +25,33 @@ background:white;
 padding:20px;
 margin:20px auto;
 border-radius:15px;
-max-width:350px;
-}
-
-.offer{
-background:#fff3cd;
+max-width:400px;
 }
 
 button{
 background:#0066ff;
 color:white;
 padding:12px 25px;
-border:0;
+border:none;
 border-radius:10px;
 }
 
 input,select{
-width:80%;
+width:85%;
 padding:12px;
+margin:8px;
 border-radius:10px;
-margin:5px;
 }
 
-.float-whatsapp{
+.float{
 position:fixed;
-bottom:20px;
 right:20px;
+bottom:20px;
 background:#25D366;
 color:white;
-font-size:30px;
-width:60px;
-height:60px;
+padding:15px;
 border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-text-decoration:none;
+font-size:25px;
 }
 </style>
 
@@ -69,71 +59,116 @@ text-decoration:none;
 
 <body>
 
+
 <div class="header">
+
 <h1>🚀 Maverick Data Hub</h1>
+
 <p>Fast • Affordable • Reliable Data Bundles</p>
+
 </div>
+
+
 
 <div class="box">
+
 <h3>📱 MTN • Telecel • AirtelTigo</h3>
+
 <p>💯 Your trusted data plug</p>
+
 </div>
 
-<div class="box offer">
+
+
+<div class="box">
+
 <h2>🔥 SPECIAL OFFER 🔥</h2>
-<p>Get affordable data bundles today!</p>
+
 <p>⚡ Fast delivery • 💯 Trusted service</p>
+
 </div>
+
+
 
 <div class="box">
 
 <h2>Our Data Packages 📶</h2>
 
-<p>1GB Data<br><b>GH₵5</b></p>
-<button onclick="chooseBundle('1GB Data','GH₵5')">Buy Now</button>
 
-<p>2GB Data<br><b>GH₵10</b></p>
-<button onclick="chooseBundle('2GB Data','GH₵10')">Buy Now</button>
+<p>1GB Data - GH₵5</p>
 
-<p>5GB Data<br><b>GH₵20</b></p>
-<button onclick="chooseBundle('5GB Data','GH₵20')">Buy Now</button>
+<p>2GB Data - GH₵10</p>
 
-<p>10GB Data<br><b>GH₵35</b></p>
-<button onclick="chooseBundle('10GB Data','GH₵35')">Buy Now</button>
+<p>5GB Data - GH₵20</p>
+
+<p>10GB Data - GH₵35</p>
+
 
 </div>
+
+
+
+
 <div class="box">
 
 <h2>📝 Place Your Order</h2>
 
-<input type="text" id="name" placeholder="Enter your name"><br>
 
-<input type="tel" id="phone" placeholder="Enter phone number"><br>
+<input id="name" placeholder="Enter your name">
+
+
+<input id="phone" placeholder="Enter phone number">
+
+
 
 <select id="network">
-<option>MTN</option>
-<option>Telecel</option>
-<option>AirtelTigo</option>
-</select><br>
 
-<select id="bundle">
-<option>1GB Data - GH₵5</option>
-<option>2GB Data - GH₵10</option>
-<option>5GB Data - GH₵20</option>
-<option>10GB Data - GH₵35</option>
+<option>MTN</option>
+
+<option>Telecel</option>
+
+<option>AirtelTigo</option>
+
 </select>
 
-<p id="price">Price: GH₵5</p>
 
-<h3>📸 Upload Payment Screenshot</h3>
 
-<input type="file" id="paymentScreenshot" accept="image/*">
+<select id="bundle">
+
+<option>1GB Data - GH₵5</option>
+
+<option>2GB Data - GH₵10</option>
+
+<option>5GB Data - GH₵20</option>
+
+<option>10GB Data - GH₵35</option>
+
+</select>
+
+
+
+<br>
+
+📸 Upload Payment Screenshot
 
 <br><br>
 
-<button onclick="submitOrder()">Submit Order</button>
+
+<input type="file" id="image" accept="image/*">
+
+
+<br><br>
+
+
+<button onclick="sendOrder()">
+Submit Order
+</button>
+
 
 </div>
+
+
+
 
 
 <div class="box">
@@ -141,150 +176,125 @@ text-decoration:none;
 <h2>💰 Payment Details</h2>
 
 <p>Network: MTN Mobile Money</p>
+
 <p>Name: Afornyo Prosper</p>
+
 <p>Number: 0546155096</p>
 
-<p>After payment, upload screenshot and submit your order.</p>
 
 </div>
 
 
-<div class="box">
-
-<h2>📦 Order Status</h2>
-
-<p>🟡 Pending Payment</p>
-<p>🔵 Payment Confirmed</p>
-<p>🟢 Data Delivered</p>
-
-</div>
-
-
-<div class="box">
-
-<h2>⭐ Why Choose Maverick Data Hub?</h2>
-
-<p>✅ Fast and reliable data bundles</p>
-<p>✅ Affordable prices</p>
-<p>✅ Quick WhatsApp support</p>
-
-</div>
-
-
-<a class="float-whatsapp"
-href="https://wa.me/233546155096">
-  <script>
-
-let selectedBundle = "1GB Data";
-let selectedPrice = "GH₵5";
-
-
-function chooseBundle(bundle, price){
-
-selectedBundle = bundle;
-selectedPrice = price;
-
-document.getElementById("bundle").value = bundle + " - " + price;
-document.getElementById("price").innerHTML = "Price: " + price;
-
-}
 
 
 
-async function submitOrder(){
+<a class="float" href="https://wa.me/233546155096">
 
-const file = document.getElementById("paymentScreenshot").files[0];
+💬
+
+</a>
+
+
+
+
+
+<script>
+
+async function sendOrder(){
+
+
+let file=document.getElementById("image").files[0];
+
 
 if(!file){
+
 alert("Please upload payment screenshot");
+
 return;
+
 }
 
 
-const formData = new FormData();
 
-formData.append("file", file);
+let form=new FormData();
 
-formData.append("upload_preset","mdh_payment_upload");
+
+form.append("file",file);
+
+
+form.append("upload_preset","mdh_payment_upload");
+
 
 
 
 try{
 
 
-const response = await fetch(
+let upload=await fetch(
+
 "https://api.cloudinary.com/v1_1/znemrfzm/image/upload",
+
 {
+
 method:"POST",
-body:formData
+
+body:form
+
 }
+
 );
 
 
-const result = await response.json();
 
-
-console.log(result);
-
-
-
-if(result.secure_url){
-
-
-const name = document.getElementById("name").value;
-
-const phone = document.getElementById("phone").value;
-
-const network = document.getElementById("network").value;
+let data=await upload.json();
 
 
 
-const message =
+
+if(data.secure_url){
+
+
+
+let message=
+
 `🚀 Maverick Data Hub Order
 
-👤 Name: ${name}
+👤 Name: ${document.getElementById("name").value}
 
-📱 Phone: ${phone}
+📱 Phone: ${document.getElementById("phone").value}
 
-📶 Network: ${network}
+📶 Network: ${document.getElementById("network").value}
 
-📦 Bundle: ${selectedBundle}
+📦 Bundle: ${document.getElementById("bundle").value}
 
-💰 Price: ${selectedPrice}
-
-📸 Payment Screenshot:
-${result.secure_url}
-
-I have placed my order.`;
+📸 Screenshot:
+${data.secure_url}`;
 
 
 
 window.open(
-"https://wa.me/233546155096?text=" 
-+ encodeURIComponent(message)
+
+"https://wa.me/233546155096?text="+encodeURIComponent(message)
+
 );
 
 
 
 }else{
 
-
-alert("Cloudinary upload failed");
-
-console.log(result);
-
+alert("Upload failed");
 
 }
 
 
 
-}catch(error){
+}
 
-
-console.log(error);
+catch(e){
 
 alert("Upload error");
 
+console.log(e);
 
 }
 
@@ -296,13 +306,5 @@ alert("Upload error");
 </script>
 
 
-<footer>
-<p>© 2026 Maverick Data Hub</p>
-</footer>
-
-
 </body>
-</html>
-  
-💬
-</a>
+  </html>
