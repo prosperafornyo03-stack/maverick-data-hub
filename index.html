@@ -1,63 +1,92 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Maverick Data Hub</title>
 
 <style>
 body{
-    font-family:Arial,sans-serif;
-    background:#f5f5f5;
-    text-align:center;
-    padding:20px;
-    margin:0;
+font-family:Arial,sans-serif;
+background:#f0f4ff;
+text-align:center;
+padding:15px;
+margin:0;
 }
+
 .header{
-    background:#0066ff;
-    color:white;
-    padding:25px;
-    border-radius:15px;
+background:#0066ff;
+color:white;
+padding:30px;
+border-radius:20px;
 }
+
+.logo{
+font-size:45px;
+}
+
 .box{
-    background:white;
-    padding:20px;
-    margin:20px auto;
-    border-radius:15px;
-    max-width:350px;
-    box-shadow:0 2px 8px rgba(0,0,0,.1);
+background:white;
+padding:20px;
+margin:20px auto;
+border-radius:20px;
+max-width:380px;
+box-shadow:0 4px 10px rgba(0,0,0,.1);
 }
-.offer{
-    background:#fff3cd;
-}
+
 button{
-    background:#0066ff;
-    color:white;
-    padding:12px 25px;
-    border:0;
-    border-radius:10px;
-    cursor:pointer;
+background:#0066ff;
+color:white;
+padding:12px 25px;
+border:none;
+border-radius:15px;
+font-size:16px;
+cursor:pointer;
 }
+
+button:hover{
+background:#0047b3;
+}
+
 input,select{
-    width:80%;
-    padding:12px;
-    border-radius:10px;
-    margin:10px 0;
+width:85%;
+padding:12px;
+margin:8px;
+border-radius:10px;
+border:1px solid #ccc;
 }
-.float-whatsapp{
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    background:#25D366;
-    color:white;
-    font-size:30px;
-    width:60px;
-    height:60px;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-decoration:none;
+
+.package{
+font-size:18px;
+}
+
+.price{
+color:#0066ff;
+font-size:25px;
+font-weight:bold;
+}
+
+.offer{
+background:#fff3cd;
+}
+
+.review{
+font-style:italic;
+}
+
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:white;
+font-size:30px;
+width:60px;
+height:60px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+text-decoration:none;
 }
 </style>
 </head>
@@ -65,11 +94,13 @@ input,select{
 <body>
 
 <div class="header">
-<h1>🚀 Maverick Data Hub</h1>
+<div class="logo">🚀</div>
+<h1>Maverick Data Hub</h1>
 <p>Fast • Affordable • Reliable Data Bundles</p>
 <p>📱 MTN • Telecel • AirtelTigo</p>
 <p>💯 Your trusted data plug</p>
 </div>
+
 
 <div class="box offer">
 <h2>🔥 SPECIAL OFFER 🔥</h2>
@@ -77,126 +108,100 @@ input,select{
 <p>⚡ Fast delivery • 💯 Trusted service</p>
 </div>
 
+
 <h2>Our Data Packages 📶</h2>
 
-<div class="box">
+
+<div class="box package">
 <h3>1GB Data</h3>
-<h2>GH₵5</h2>
-<button onclick="selectBundle('1GB Data','GH₵5')">Buy Now</button>
+<p class="price">GH₵5</p>
+<button onclick="choose('1GB Data','GH₵5')">Buy Now</button>
 </div>
 
-<div class="box">
+
+<div class="box package">
+<h3>2GB Data</h3>
+<p class="price">GH₵10</p>
+<button onclick="choose('2GB Data','GH₵10')">Buy Now</button>
+</div>
+
+
+<div class="box package">
 <h3>5GB Data</h3>
-<h2>GH₵20</h2>
-<button onclick="selectBundle('5GB Data','GH₵20')">Buy Now</button>
+<p class="price">GH₵20</p>
+<button onclick="choose('5GB Data','GH₵20')">Buy Now</button>
 </div>
 
-<div class="box">
+
+<div class="box package">
 <h3>10GB Data</h3>
-<h2>GH₵35</h2>
-<button onclick="selectBundle('10GB Data','GH₵35')">Buy Now</button>
+<p class="price">GH₵35</p>
+<button onclick="choose('10GB Data','GH₵35')">Buy Now</button>
 </div>
 
+
+<div class="box package">
+<h3>15GB Data</h3>
+<p class="price">GH₵50</p>
+<button onclick="choose('15GB Data','GH₵50')">Buy Now</button>
+</div>
+
+
 <div class="box">
+
 <h2>📝 Place Your Order</h2>
 
-<input type="text" id="name" placeholder="Enter your name"><br>
+<input id="name" placeholder="Enter your name">
 
-<input type="tel" id="phone" placeholder="Enter phone number"><br>
+<input id="phone" placeholder="Enter phone number">
+
 
 <select id="network">
 <option>MTN</option>
 <option>Telecel</option>
 <option>AirtelTigo</option>
-</select><br>
+</select>
+
 
 <select id="bundle">
 <option>1GB Data</option>
+<option>2GB Data</option>
 <option>5GB Data</option>
 <option>10GB Data</option>
+<option>15GB Data</option>
 </select>
 
-<p id="price"><b>Price: GH₵5</b></p>
 
-<button onclick="sendOrder()">Submit Order</button>
+<p id="amount"><b>Price: GH₵5</b></p>
+
+<button onclick="order()">Submit Order</button>
+
 </div>
 
-<div class="box">
-<h2>📦 Order Status</h2>
-<p>🟡 Pending Payment</p>
-<p>🔵 Payment Confirmed</p>
-<p>🟢 Data Delivered</p>
-</div>
+
 
 <div class="box">
+
 <h2>💰 Payment Details</h2>
-<p><b>Network:</b> MTN Mobile Money</p>
-<p><b>Name:</b> Afornyo Prosper</p>
-<p><b>Number:</b> 0546155096</p>
+
+<p>Network: MTN Mobile Money</p>
+
+<p>Name: Afornyo Prosper</p>
+
+<p>Number: 0546155096</p>
+
 <p>After payment, send screenshot on WhatsApp.</p>
+
 </div>
+
+
 
 <div class="box">
-<h2>⭐ Why Choose Maverick Data Hub?</h2>
-<p>✅ Fast and reliable data bundles</p>
-<p>✅ Affordable prices</p>
-<p>✅ Quick WhatsApp support</p>
-</div>
 
-<div class="box">
-<h2>💬 Customer Reviews</h2>
-<p>⭐⭐⭐⭐⭐</p>
-<p>Fast service and reliable data.</p>
-</div>
+<h2>📦 Order Status</h2>
 
-<p>© 2026 Maverick Data Hub</p>
+<p>🟡 Pending Payment</p>
 
-<a href="https://wa.me/233546155096" class="float-whatsapp">💬</a>
+<p>🔵 Payment Confirmed</p>
 
-<script>
-function selectBundle(bundle, price){
-    document.getElementById("bundle").value = bundle;
-    document.getElementById("price").innerHTML = "<b>Price: " + price + "</b>";
-    window.scrollTo({
-        top: document.getElementById("bundle").offsetTop - 100,
-        behavior: "smooth"
-    });
-}
-
-document.getElementById("bundle").addEventListener("change", function(){
-    let prices = {
-        "1GB Data":"GH₵5",
-        "5GB Data":"GH₵20",
-        "10GB Data":"GH₵35"
-    };
-    document.getElementById("price").innerHTML =
-        "<b>Price: " + prices[this.value] + "</b>";
-});
-
-function sendOrder(){
-    let name = document.getElementById("name").value;
-    let phone = document.getElementById("phone").value;
-    let network = document.getElementById("network").value;
-    let bundle = document.getElementById("bundle").value;
-    let price = document.getElementById("price").innerText.replace("Price: ","");
-
-    let message =
-`🚀 *Maverick Data Hub Order*
-
-👤 Name: ${name}
-📱 Phone: ${phone}
-📶 Network: ${network}
-📦 Bundle: ${bundle}
-💰 ${price}
-
-I have placed my order.`;
-
-    window.open(
-        "https://wa.me/233546155096?text=" + encodeURIComponent(message),
-        "_blank"
-    );
-}
-</script>
-
-</body>
-</html>
+<p>🟢 Data
