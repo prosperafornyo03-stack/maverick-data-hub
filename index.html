@@ -83,6 +83,7 @@ input, select {
 
 <h2>Our Data Packages 📶</h2>
 
+
 <div class="package">
 <h3>1GB Data</h3>
 <p>GH₵5</p>
@@ -114,26 +115,31 @@ input, select {
 
 <h2>📝 Place Your Order</h2>
 
-<input placeholder="Enter your name">
+<input id="name" placeholder="Enter your name">
 
 <br><br>
 
-<input placeholder="Enter phone number">
+<input id="phone" placeholder="Enter phone number">
 
 <br><br>
 
-<select>
+<select id="package">
+
 <option>1GB - GH₵5</option>
+
 <option>5GB - GH₵20</option>
+
 <option>10GB - GH₵35</option>
+
 </select>
 
 <br><br>
 
-<button>Submit Order</button>
+<button onclick="sendOrder()">Submit Order</button>
 
 
 <hr>
+
 
 <h2>💰 Payment Details</h2>
 
@@ -153,8 +159,11 @@ input, select {
 <h2>⭐ Why Choose Maverick Data Hub?</h2>
 
 <p>✅ Fast and reliable data bundles</p>
+
 <p>✅ Affordable prices for everyone</p>
+
 <p>✅ Quick WhatsApp support</p>
+
 <p>✅ Trusted service</p>
 
 </div>
@@ -176,8 +185,38 @@ input, select {
 </a>
 
 
+<script>
+
+function sendOrder(){
+
+let name = document.getElementById("name").value;
+
+let phone = document.getElementById("phone").value;
+
+let pack = document.getElementById("package").value;
+
+
+let message =
+"Hello Maverick Data Hub 👋🏾%0A%0A" +
+"Name: " + name + "%0A" +
+"Phone: " + phone + "%0A" +
+"Package: " + pack;
+
+
+window.open(
+"https://wa.me/233546155096?text=" + message,
+"_blank"
+);
+
+}
+
+</script>
+
+
 <div class="footer">
+
 <p>© 2026 Maverick Data Hub</p>
+
 </div>
 
 
