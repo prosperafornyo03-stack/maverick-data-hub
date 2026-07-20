@@ -1,172 +1,49 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Maverick Data Hub</title>
-
-<style>
-body {
-  font-family: Arial, sans-serif;
-  background:#f2f2f2;
-  text-align:center;
-  margin:0;
-}
-
-header {
-  background:linear-gradient(135deg,#111,#333);
-  color:white;
-  padding:35px;
-  border-radius:0 0 25px 25px;
-}
-
-.logo {
-  font-size:60px;
-}
-
-.box {
-  background:white;
-  margin:20px;
-  padding:20px;
-  border-radius:15px;
-  box-shadow:0 2px 8px #ccc;
-}
-
-button {
-  background:green;
-  color:white;
-  padding:12px 25px;
-  border:none;
-  border-radius:10px;
-  font-size:16px;
-  margin:5px;
-}
-
-input, select {
-  width:80%;
-  padding:12px;
-  margin:8px;
-  border-radius:8px;
-}
-
-a {
-  text-decoration:none;
-}
-
-.review {
-  font-style:italic;
-}
-
-footer {
-  background:#111;
-  color:white;
-  padding:15px;
-}
-</style>
-
-</head>
-
-<body>
-
-<header>
-<div class="logo">🚀</div>
-<h1>🔥 Maverick Data Hub 🔥</h1>
-<p>Your Trusted Data Plug in Ghana 🇬🇭</p>
-<p>Fast • Affordable • Reliable</p>
-</header>
-
-
-<div class="box">
-<h2>📦 Buy Data</h2>
-
-<p>🟡 MTN 1GB - GH₵5</p>
-<a href="https://wa.me/233546155096?text=I%20want%20MTN%201GB">
-<button>Buy MTN 1GB</button>
-</a>
-
-<p>🟡 MTN 10GB - GH₵50</p>
-<a href="https://wa.me/233546155096?text=I%20want%20MTN%2010GB">
-<button>Buy MTN 10GB</button>
-</a>
-
-<p>🟡 MTN 100GB - GH₵500</p>
-<a href="https://wa.me/233546155096?text=I%20want%20MTN%20100GB">
-<button>Buy MTN 100GB</button>
-</a>
-
-
-<p>🔴 Telecel 100GB - GH₵500</p>
-<a href="https://wa.me/233546155096?text=I%20want%20Telecel%20100GB">
-<button>Buy Telecel</button>
-</a>
-
-
-<p>🔵 AirtelTigo 100GB - GH₵500</p>
-<a href="https://wa.me/233546155096?text=I%20want%20AirtelTigo%20100GB">
-<button>Buy AirtelTigo</button>
-</a>
-
-</div>
-
-
 <div class="box">
 <h2>📝 Order Details</h2>
 
-<input placeholder="Your Name">
+<input id="name" placeholder="Your Name">
 
-<input placeholder="Phone Number">
+<input id="phone" placeholder="Phone Number">
 
-<select>
+<select id="network">
 <option>Select Network</option>
 <option>MTN</option>
 <option>Telecel</option>
 <option>AirtelTigo</option>
 </select>
 
-<select>
+<select id="bundle">
 <option>Select Bundle</option>
 <option>1GB</option>
 <option>10GB</option>
 <option>100GB</option>
 </select>
 
-</div>
+<br>
 
-
-<div class="box">
-<h2>💰 Payment</h2>
-
-<p>MTN MoMo: 0546155096</p>
-<p>Name: Maverick</p>
+<button onclick="sendOrder()">Send Order on WhatsApp</button>
 
 </div>
 
+<script>
+function sendOrder(){
 
-<div class="box">
-<h2>⭐ Customer Reviews</h2>
+let name = document.getElementById("name").value;
+let phone = document.getElementById("phone").value;
+let network = document.getElementById("network").value;
+let bundle = document.getElementById("bundle").value;
 
-<p class="review">
-"Fast delivery and affordable data 🔥"
-</p>
+let message = 
+"Hello Maverick Data Hub,%0A%0A" +
+"Name: " + name + "%0A" +
+"Phone: " + phone + "%0A" +
+"Network: " + network + "%0A" +
+"Bundle: " + bundle;
 
-<p class="review">
-"Best data plug in Ghana 🇬🇭"
-</p>
+window.open(
+"https://wa.me/233546155096?text=" + message,
+"_blank"
+);
 
-</div>
-
-
-<div class="box">
-<h2>📱 Contact Us</h2>
-
-<p>WhatsApp: 0546155096</p>
-<p>TikTok: @maverick1gh</p>
-
-</div>
-
-
-<footer>
-<p>© 2026 Maverick Data Hub</p>
-</footer>
-
-
-</body>
-  </html>
+}
+</script>
