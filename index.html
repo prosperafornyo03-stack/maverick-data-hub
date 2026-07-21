@@ -47,16 +47,6 @@ font-size:16px;
 cursor:pointer;
 }
 
-button:hover{
-background:#004dcc;
-}
-
-.logo{
-width:100px;
-height:100px;
-border-radius:50%;
-}
-
 </style>
 
 </head>
@@ -64,11 +54,8 @@ border-radius:50%;
 <body>
 
 <div class="header">
-
 <h1>Maverick Data Hub</h1>
-
 <p>Fast • Affordable • Reliable Data Bundles</p>
-
 </div>
 
 
@@ -82,21 +69,17 @@ border-radius:50%;
 
 
 <select id="network">
-
 <option>MTN</option>
 <option>Telecel</option>
 <option>AirtelTigo</option>
-
 </select>
 
 
 <select id="bundle">
-
 <option>1GB - GH₵5</option>
 <option>2GB - GH₵10</option>
 <option>5GB - GH₵20</option>
 <option>10GB - GH₵35</option>
-
 </select>
 
 
@@ -107,22 +90,18 @@ border-radius:50%;
 Place Order
 </button>
 
-
 <p id="message"></p>
 
-
-</div>
-<div class="box">
+</div><div class="box">
 
 <h2>Payment Details</h2>
 
-<p>Pay through Mobile Money</p>
+<p>Pay via Mobile Money</p>
 
 <p><b>Name:</b> Afornyo Prosper</p>
-
 <p><b>Number:</b> 0546155096</p>
 
-<p>After payment, upload your payment screenshot above.</p>
+<p>After payment, upload your screenshot and submit your order.</p>
 
 </div>
 
@@ -131,7 +110,7 @@ Place Order
 
 <h2>How To Order</h2>
 
-<p>1. Select your preferred data bundle</p>
+<p>1. Choose your data bundle</p>
 <p>2. Make payment</p>
 <p>3. Upload payment proof</p>
 <p>4. Click Place Order</p>
@@ -149,7 +128,11 @@ Place Order
 
 <button>
 Chat on WhatsApp
-  <script type="module">
+</button>
+
+</a>
+
+</div><script type="module">
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
@@ -172,7 +155,6 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
 
-
 window.placeOrder = async function(){
 
 const name = document.getElementById("name").value;
@@ -187,6 +169,7 @@ const message = document.getElementById("message");
 if(!name || !phone || !proof){
 
 message.innerHTML = "Please fill all details and upload payment proof.";
+
 return;
 
 }
@@ -198,7 +181,7 @@ message.innerHTML = "Uploading payment proof...";
 
 
 let formData = new FormData();
-console.log(imageData);
+
 formData.append("file", proof);
 
 formData.append("upload_preset","mdh_payment_upload");
@@ -214,8 +197,6 @@ body:formData
 
 
 let imageData = await upload.json();
-
-console.log(imageData);
 
 let imageUrl = imageData.secure_url;
 
@@ -238,46 +219,36 @@ date:new Date().toString()
 });
 
 
-message.innerHTML = "Order completed successfully ✅";
+message.innerHTML = "Order sent successfully ✅";
 
 
-let whatsappMessage =
-`Hello Maverick Data Hub,%0A%0A`+
+let text =
+`Hello Maverick Data Hub%0A%0A`+
 `New Order%0A`+
 `Name: ${name}%0A`+
 `Phone: ${phone}%0A`+
 `Network: ${network}%0A`+
 `Bundle: ${bundle}%0A`+
-`Payment Proof: ${imageUrl}`;
+`Proof: ${imageUrl}`;
 
 
 window.open(
-"https://wa.me/233546155096?text="+whatsappMessage,
+"https://wa.me/233546155096?text="+text,
 "_blank"
 );
 
 
-}
+}catch(error){
 
-catch"Error: " + error.message
 message.innerHTML = "Error: " + error.message;
 
 console.log(error);
-}
 
 }
 
 
 }
 
-
-                </script>
-</button>
-
-</a>
-
-</div>
-  </body>
-
+</script>
+</body>
 </html>
-  
