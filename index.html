@@ -55,7 +55,7 @@ font-size:16px;
 
 <div class="header">
 
-<h1>Maverick Data Hub</h1>
+<h1>🔥 Maverick Data Hub 🔥</h1>
 
 <p>Fast & Affordable Data Bundles in Ghana 🇬🇭</p>
 
@@ -94,15 +94,16 @@ font-size:16px;
 
 
 <button onclick="placeOrder()">
-
 Place Order
-
 </button>
 
 
 <p id="message"></p>
 
-</div><div class="box">
+</div>
+
+
+<div class="box">
 
 <h2>Payment Details</h2>
 
@@ -121,7 +122,7 @@ Place Order
 
 <h2>Available Data Bundles</h2>
 
-<p>📱 MTN</p>
+<p>🟡 MTN</p>
 <p>1GB - GH₵6.50</p>
 <p>2GB - GH₵11.50</p>
 <p>5GB - GH₵26.50</p>
@@ -138,8 +139,6 @@ Place Order
 <p>5GB - GH₵26.50</p>
 
 </div>
-
-
 <div class="box">
 
 <h2>How To Order</h2>
@@ -149,7 +148,10 @@ Place Order
 <p>3. Upload payment proof</p>
 <p>4. Submit your order</p>
 
-</div><div class="box">
+</div>
+
+
+<div class="box">
 
 <h2>Contact Maverick Data Hub</h2>
 
@@ -197,20 +199,19 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
 
-
 window.placeOrder = async function(){
-
 
 let name = document.getElementById("name").value;
 
 let phone = document.getElementById("phone").value;
+
+let network = document.getElementById("network").value;
 
 let bundle = document.getElementById("bundle").value;
 
 let proof = document.getElementById("proof").files[0];
 
 let message = document.getElementById("message");
-
 
 
 if(!name || !phone || !proof){
@@ -222,19 +223,16 @@ return;
 }
 
 
-
 try{
-
 
 message.innerHTML="Uploading payment proof...";
 
 
 let formData = new FormData();
 
-formData.append("file", proof);
+formData.append("file",proof);
 
 formData.append("upload_preset","mdh_payment_upload");
-
 
 
 let upload = await fetch(
@@ -252,29 +250,23 @@ body:formData
 );
 
 
-
 let imageData = await upload.json();
 
 
+let imageUrl = imageData.secure_url;
 
-if(!imageData.secure_url){
+
+if(!imageUrl){
 
 throw new Error("Image upload failed");
 
 }
 
 
-
-let imageUrl = imageData.secure_url;
-
-
-
 message.innerHTML="Saving order...";
 
 
-
 let order = push(ref(db,"orders"));
-
 
 
 await set(order,{
@@ -282,6 +274,8 @@ await set(order,{
 name:name,
 
 phone:phone,
+
+network:network,
 
 bundle:bundle,
 
@@ -292,9 +286,7 @@ date:new Date().toString()
 });
 
 
-
 message.innerHTML="Order sent successfully ✅";
-
 
 
 window.open(
@@ -305,6 +297,8 @@ window.open(
 
 "%0APhone: "+phone+
 
+"%0ANetwork: "+network+
+
 "%0ABundle: "+bundle+
 
 "%0AProof: "+imageUrl,
@@ -312,7 +306,6 @@ window.open(
 "_blank"
 
 );
-
 
 
 }
@@ -324,194 +317,13 @@ message.innerHTML="Error: "+error.message;
 console.log(error);
 
 }
-
-
-
-}
-
-
-  </script>
-  <div class="box">
-
-<h2>Contact Maverick Data Hub</h2>
-
-<p>Fast delivery. Reliable service. ✅</p>
-
-<a href="https://wa.me/233546155096" target="_blank">
-
-<button>
-Chat on WhatsApp
-</button>
-
-</a>
-
-</div>
-
-
-<script type="module">
-
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-
-import { getDatabase, ref, push, set } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
-
-
-const firebaseConfig = {
-
-apiKey: "AIzaSyDVMhdWshHyn2sRFKtiF1mu9rR82PzRXJM",
-
-authDomain: "maverick-data-hub-bc904.firebaseapp.com",
-
-databaseURL: "https://maverick-data-hub-bc904-default-rtdb.firebaseio.com",
-
-projectId: "maverick-data-hub-bc904",
-
-storageBucket: "maverick-data-hub-bc904.firebasestorage.app",
-
-messagingSenderId: "161516394504",
-
-appId: "1:161516394504:web:2c95b5fb969628452099bd"
-
-};
-
-
-const app = initializeApp(firebaseConfig);
-
-const db = getDatabase(app);
-
-
-
-window.placeOrder = async function(){
-
-
-let name = document.getElementById("name").value;
-
-let phone = document.getElementById("phone").value;
-
-let bundle = document.getElementById("bundle").value;
-
-let proof = document.getElementById("proof").files[0];
-
-let message = document.getElementById("message");
-
-
-
-if(!name || !phone || !proof){
-
-message.innerHTML="Please fill all details and upload payment proof.";
-
-return;
-
-}
-
-
-
-try{
-
-
-message.innerHTML="Uploading payment proof...";
-
-
-let formData = new FormData();
-
-formData.append("file", proof);
-
-formData.append("upload_preset","mdh_payment_upload");
-
-
-
-let upload = await fetch(
-
-"https://api.cloudinary.com/v1_1/znemrfzm/image/upload",
-
-{
-
-method:"POST",
-
-body:formData
-
-}
-
-);
-
-
-
-let imageData = await upload.json();
-
-
-
-if(!imageData.secure_url){
-
-throw new Error("Image upload failed");
-
-}
-
-
-
-let imageUrl = imageData.secure_url;
-
-
-
-message.innerHTML="Saving order...";
-
-
-
-let order = push(ref(db,"orders"));
-
-
-
-await set(order,{
-
-name:name,
-
-phone:phone,
-
-bundle:bundle,
-
-paymentProof:imageUrl,
-
-date:new Date().toString()
-
-});
-
-
-
-message.innerHTML="Order sent successfully ✅";
-
-
-
-window.open(
-
-"https://wa.me/233546155096?text="+
-
-"New Order%0AName: "+name+
-
-"%0APhone: "+phone+
-
-"%0ABundle: "+bundle+
-
-"%0AProof: "+imageUrl,
-
-"_blank"
-
-);
-
-
-
-}
-
-catch(error){
-
-message.innerHTML="Error: "+error.message;
-
-console.log(error);
-
-}
-
 
 
 }
 
 
 </script>
+
+
 </body>
 </html>
