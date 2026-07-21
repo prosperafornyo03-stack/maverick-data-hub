@@ -33,7 +33,25 @@ border-radius:10px;
 </style>
 
 </head>
+<script>
+fetch("orders.json")
+.then(response => response.json())
+.then(orders => {
+  let box = document.getElementById("orders");
 
+  orders.forEach(order => {
+    box.innerHTML += `
+      <div class="box">
+        <h3>${order.name}</h3>
+        <p>Network: ${order.network}</p>
+        <p>Package: ${order.amount}</p>
+        <p>Phone: ${order.phone}</p>
+        <p>Status: ${order.status}</p>
+      </div>
+    `;
+  });
+});
+</script>
 <body>
 
 <h1>🔥 Maverick Data Hub Admin 🔥</h1>
