@@ -162,7 +162,135 @@ border-radius:50%;
 
 
 
-<script>
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import { getDatabase, ref, push, set } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+
+const firebaseConfig = {
+
+apiKey: "AIzaSyDVMhdWshHyn2sRFKtiF1mu9rR82PzRXJM",
+
+authDomain: "maverick-data-hub-bc904.firebaseapp.com",
+
+databaseURL: "https://maverick-data-hub-bc904-default-rtdb.firebaseio.com",
+
+projectId: "maverick-data-hub-bc904",
+
+storageBucket: "maverick-data-hub-bc904.firebasestorage.app",
+
+messagingSenderId: "161516394504",
+
+appId: "1:161516394504:web:2c95b5fb969628452099bd"
+
+};
+
+
+const app = initializeApp(firebaseConfig);
+
+const db = getDatabase(app);
+
+
+
+async function sendOrder(){
+
+
+let file = document.getElementById("image").files[0];
+
+
+if(!file){
+
+alert("Please upload payment screenshot");
+
+return;
+
+}
+
+
+let formData = new FormData();
+
+formData.append("file", file);
+
+formData.append("upload_preset","mdh_payment_upload");
+
+
+
+let upload = await fetch(
+
+"https://api.cloudinary.com/v1_1/znemrfzm/image/upload",
+
+{
+
+method:"POST",
+
+body:formData
+
+}
+
+);
+
+
+let cloud = await upload.json();
+
+
+
+if(cloud.secure_url){
+
+
+let order = {
+
+name: document.getElementById("name").value,
+
+phone: document.getElementById("phone").value,
+
+network: document.getElementById("network").value,
+
+bundle: document.getElementById("bundle").value,
+
+screenshot: cloud.secure_url,
+
+status: "Pending Payment",
+
+date: new Date().toString()
+
+};
+
+
+
+let newOrder = push(ref(db,"orders"));
+
+await set(newOrder, order);
+
+
+
+alert("Order submitted successfully!");
+
+
+window.open(
+
+"https://wa.me/233546155096?text="+
+
+encodeURIComponent(
+
+"New Maverick Data Hub Order\n\n"+
+
+JSON.stringify(order,null,2)
+
+)
+
+);
+
+
+}
+
+
+}
+
+window.sendOrder = sendOrder;
+
+</script>
 
 async function sendOrder(){
 
