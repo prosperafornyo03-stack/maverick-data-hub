@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <title>Maverick Data Hub</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
+
 body{
 font-family:Arial,sans-serif;
 background:#f5f5f5;
@@ -26,21 +28,24 @@ padding:20px;
 margin:20px auto;
 border-radius:15px;
 max-width:400px;
+box-shadow:0 2px 8px #ccc;
 }
 
 button{
 background:#0066ff;
 color:white;
 padding:12px 25px;
-border:0;
+border:none;
 border-radius:10px;
+font-size:16px;
 }
 
 input,select{
-width:85%;
+width:90%;
 padding:12px;
 margin:8px;
 border-radius:10px;
+border:1px solid #ccc;
 }
 
 .float{
@@ -49,42 +54,58 @@ right:20px;
 bottom:20px;
 background:#25D366;
 color:white;
-font-size:25px;
 padding:15px;
 border-radius:50%;
+font-size:25px;
 }
+
 </style>
 
 </head>
 
 <body>
 
+
 <div class="header">
+
 <h1>🚀 Maverick Data Hub</h1>
+
 <p>Fast • Affordable • Reliable Data Bundles</p>
+
 </div>
 
+
 <div class="box">
+
 <p>📱 MTN • Telecel • AirtelTigo</p>
+
 <p>💯 Your trusted data plug</p>
+
 </div>
 
+
 <div class="box">
+
 <h2>🔥 SPECIAL OFFER 🔥</h2>
+
 <p>⚡ Fast delivery • 💯 Trusted service</p>
+
 </div>
+
 
 <div class="box">
 
 <h2>Our Data Packages 📶</h2>
 
 <p>1GB Data - GH₵5</p>
+
 <p>2GB Data - GH₵10</p>
+
 <p>5GB Data - GH₵20</p>
+
 <p>10GB Data - GH₵35</p>
 
 </div>
-
 <div class="box">
 
 <h2>📝 Place Your Order</h2>
@@ -93,28 +114,50 @@ border-radius:50%;
 
 <input id="phone" placeholder="Enter phone number">
 
+
 <select id="network">
+
 <option>MTN</option>
+
 <option>Telecel</option>
+
 <option>AirtelTigo</option>
+
 </select>
 
+
 <select id="bundle">
+
 <option>1GB Data - GH₵5</option>
+
 <option>2GB Data - GH₵10</option>
+
 <option>5GB Data - GH₵20</option>
+
 <option>10GB Data - GH₵35</option>
+
 </select>
+
 
 <p>📸 Upload Payment Screenshot</p>
 
+
 <input type="file" id="image" accept="image/*">
+
 
 <br><br>
 
-<button onclick="sendOrder()">Submit Order</button>
+
+<button onclick="sendOrder()">
+
+Submit Order
+
+</button>
+
 
 </div>
+
+
 <div class="box">
 
 <h2>💰 Payment Details</h2>
@@ -154,15 +197,7 @@ border-radius:50%;
 <p>✅ Quick WhatsApp support</p>
 
 </div>
-
-
-<a class="float" href="https://wa.me/233546155096">
-💬
-</a>
-
-
-
-<script type="module">
+  <script type="module">
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
@@ -194,7 +229,7 @@ const db = getDatabase(app);
 
 
 
-async function sendOrder(){
+window.sendOrder = async function(){
 
 
 let file = document.getElementById("image").files[0];
@@ -209,11 +244,12 @@ return;
 }
 
 
-let formData = new FormData();
 
-formData.append("file", file);
+let form = new FormData();
 
-formData.append("upload_preset","mdh_payment_upload");
+form.append("file", file);
+
+form.append("upload_preset", "mdh_payment_upload");
 
 
 
@@ -225,141 +261,84 @@ let upload = await fetch(
 
 method:"POST",
 
-body:formData
+body:form
 
 }
 
 );
 
 
-let cloud = await upload.json();
+
+let imageData = await upload.json();
 
 
 
-if(cloud.secure_url){
+if(!imageData.secure_url){
 
-
-let order = {
-
-name: document.getElementById("name").value,
-
-phone: document.getElementById("phone").value,
-
-network: document.getElementById("network").value,
-
-bundle: document.getElementById("bundle").value,
-
-screenshot: cloud.secure_url,
-
-status: "Pending Payment",
-
-date: new Date().toString()
-
-};
-
-
-
-let newOrder = push(ref(db,"orders"));
-
-await set(newOrder, order);
-
-
-
-alert("Order submitted successfully!");
-
-
-window.open(
-
-"https://wa.me/233546155096?text="+
-
-encodeURIComponent(
-
-"New Maverick Data Hub Order\n\n"+
-
-JSON.stringify(order,null,2)
-
-)
-
-);
-
-
-}
-
-
-}
-
-window.sendOrder = sendOrder;
-
-</script>
-
-async function sendOrder(){
-
-let file = document.getElementById("image").files[0];
-
-
-if(!file){
-
-alert("Please upload payment screenshot");
+alert("Image upload failed");
 
 return;
 
 }
 
 
-let formData = new FormData();
 
-formData.append("file", file);
-
-formData.append("upload_preset","mdh_payment_upload");
+let order = {
 
 
-
-try{
-
-
-let response = await fetch(
-
-"https://api.cloudinary.com/v1_1/znemrfzm/image/upload",
-
-{
-
-method:"POST",
-
-body:formData
-
-}
-
-);
+name: document.getElementById("name").value,
 
 
+phone: document.getElementById("phone").value,
 
-let data = await response.json();
+
+network: document.getElementById("network").value,
+
+
+bundle: document.getElementById("bundle").value,
+
+
+screenshot: imageData.secure_url,
+
+
+status: "Pending Payment",
+
+
+date: new Date().toLocaleString()
+
+
+};
 
 
 
-console.log(data);
+let orderRef = push(ref(db,"orders"));
+
+
+await set(orderRef, order);
 
 
 
-if(data.secure_url){
+alert("Order submitted successfully!");
+
 
 
 let message =
 
 `🚀 Maverick Data Hub Order
 
-👤 Name: ${document.getElementById("name").value}
+👤 Name: ${order.name}
 
-📱 Phone: ${document.getElementById("phone").value}
+📱 Phone: ${order.phone}
 
-📶 Network: ${document.getElementById("network").value}
+📶 Network: ${order.network}
 
-📦 Bundle: ${document.getElementById("bundle").value}
+📦 Bundle: ${order.bundle}
 
 📸 Screenshot:
-${data.secure_url}
+${order.screenshot}
 
-I have placed my order.`;
+🟡 Status: ${order.status}`;
+
 
 
 window.open(
@@ -372,30 +351,8 @@ window.open(
 
 
 
-}else{
-
-
-alert("Cloudinary upload failed");
-
-console.log(data);
-
-
 }
 
-
-
-}catch(error){
-
-
-alert("Upload error");
-
-console.log(error);
-
-
-}
-
-
-}
 
 
 </script>
@@ -411,3 +368,10 @@ console.log(error);
 </body>
 
 </html>
+
+
+<a class="float" href="https://wa.me/233546155096">
+
+💬
+
+</a>
