@@ -260,9 +260,10 @@ window.open(
 }
 
 catch(error){
-message.innerHTML = "TEST ERROR";
+message.innerHTML = "Error: " + error.message;
 
 console.log(error);
+}
 
 }
 
