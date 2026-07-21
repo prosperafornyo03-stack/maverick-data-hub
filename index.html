@@ -1,200 +1,107 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <title>Maverick Data Hub</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-
 body{
-font-family:Arial,sans-serif;
-background:#f5f5f5;
-text-align:center;
-padding:20px;
+    font-family: Arial, sans-serif;
+    background:#f5f5f5;
+    text-align:center;
+    padding:20px;
 }
 
 .header{
-background:#0066ff;
-color:white;
-padding:25px;
-border-radius:15px;
+    background:#0066ff;
+    color:white;
+    padding:25px;
+    border-radius:15px;
 }
 
 .box{
-background:white;
-padding:20px;
-margin:20px auto;
-border-radius:15px;
-max-width:400px;
-box-shadow:0 2px 8px #ccc;
+    background:white;
+    padding:20px;
+    margin:20px auto;
+    border-radius:15px;
+    max-width:500px;
+    box-shadow:0 0 10px #ccc;
+}
+
+input, select, button{
+    width:90%;
+    padding:12px;
+    margin:10px;
+    border-radius:8px;
+    border:1px solid #ccc;
 }
 
 button{
-background:#0066ff;
-color:white;
-padding:12px 25px;
-border:none;
-border-radius:10px;
-font-size:16px;
+    background:#0066ff;
+    color:white;
+    border:none;
+    cursor:pointer;
+    font-size:16px;
 }
 
-input,select{
-width:90%;
-padding:12px;
-margin:8px;
-border-radius:10px;
-border:1px solid #ccc;
+button:hover{
+    background:#004dcc;
 }
 
-.float{
-position:fixed;
-right:20px;
-bottom:20px;
-background:#25D366;
-color:white;
-padding:15px;
-border-radius:50%;
-font-size:25px;
+.logo{
+    width:100px;
+    border-radius:50%;
+}
+
+.success{
+    color:green;
+    font-weight:bold;
 }
 
 </style>
-
 </head>
 
 <body>
 
-
 <div class="header">
-
-<h1>🚀 Maverick Data Hub</h1>
-
-<p>Fast • Affordable • Reliable Data Bundles</p>
-
+<h1>Maverick Data Hub</h1>
+<p>Fast & Affordable Data Bundles</p>
 </div>
 
 
 <div class="box">
 
-<p>📱 MTN • Telecel • AirtelTigo</p>
+<h2>Buy Data</h2>
 
-<p>💯 Your trusted data plug</p>
+<input id="name" placeholder="Your Name">
 
-</div>
-
-
-<div class="box">
-
-<h2>🔥 SPECIAL OFFER 🔥</h2>
-
-<p>⚡ Fast delivery • 💯 Trusted service</p>
-
-</div>
-
-
-<div class="box">
-
-<h2>Our Data Packages 📶</h2>
-
-<p>1GB Data - GH₵5</p>
-
-<p>2GB Data - GH₵10</p>
-
-<p>5GB Data - GH₵20</p>
-
-<p>10GB Data - GH₵35</p>
-
-</div>
-<div class="box">
-
-<h2>📝 Place Your Order</h2>
-
-<input id="name" placeholder="Enter your name">
-
-<input id="phone" placeholder="Enter phone number">
+<input id="phone" placeholder="Your Phone Number">
 
 
 <select id="network">
-
 <option>MTN</option>
-
 <option>Telecel</option>
-
 <option>AirtelTigo</option>
-
 </select>
 
 
 <select id="bundle">
-
-<option>1GB Data - GH₵5</option>
-
-<option>2GB Data - GH₵10</option>
-
-<option>5GB Data - GH₵20</option>
-
-<option>10GB Data - GH₵35</option>
-
+<option value="1GB">1GB Data</option>
+<option value="2GB">2GB Data</option>
+<option value="5GB">5GB Data</option>
+<option value="10GB">10GB Data</option>
 </select>
 
 
-<p>📸 Upload Payment Screenshot</p>
+<input type="file" id="proof">
 
 
-<input type="file" id="image" accept="image/*">
-
-
-<br><br>
-
-
-<button onclick="sendOrder()">
-
-Submit Order
-
+<button onclick="placeOrder()">
+Place Order
 </button>
 
-
-</div>
-
-
-<div class="box">
-
-<h2>💰 Payment Details</h2>
-
-<p>Network: MTN Mobile Money</p>
-
-<p>Name: Afornyo Prosper</p>
-
-<p>Number: 0546155096</p>
-
-<p>After payment, upload screenshot and submit your order.</p>
-
-</div>
-
-
-<div class="box">
-
-<h2>📦 Order Status</h2>
-
-<p>🟡 Pending Payment</p>
-
-<p>🔵 Payment Confirmed</p>
-
-<p>🟢 Data Delivered</p>
-
-</div>
-
-
-<div class="box">
-
-<h2>⭐ Why Choose Maverick Data Hub?</h2>
-
-<p>✅ Fast and reliable data bundles</p>
-
-<p>✅ Affordable prices</p>
-
-<p>✅ Quick WhatsApp support</p>
+<p id="message"></p>
 
 </div>
   <script type="module">
@@ -205,21 +112,13 @@ import { getDatabase, ref, push, set } from "https://www.gstatic.com/firebasejs/
 
 
 const firebaseConfig = {
-
 apiKey: "AIzaSyDVMhdWshHyn2sRFKtiF1mu9rR82PzRXJM",
-
 authDomain: "maverick-data-hub-bc904.firebaseapp.com",
-
 databaseURL: "https://maverick-data-hub-bc904-default-rtdb.firebaseio.com",
-
 projectId: "maverick-data-hub-bc904",
-
 storageBucket: "maverick-data-hub-bc904.firebasestorage.app",
-
 messagingSenderId: "161516394504",
-
 appId: "1:161516394504:web:2c95b5fb969628452099bd"
-
 };
 
 
@@ -229,149 +128,136 @@ const db = getDatabase(app);
 
 
 
-window.sendOrder = async function(){
+window.placeOrder = async function(){
+
+let name = document.getElementById("name").value;
+let phone = document.getElementById("phone").value;
+let network = document.getElementById("network").value;
+let bundle = document.getElementById("bundle").value;
+let proof = document.getElementById("proof").files[0];
+
+let message = document.getElementById("message");
 
 
-let file = document.getElementById("image").files[0];
+if(!name || !phone || !proof){
 
-
-if(!file){
-
-alert("Please upload payment screenshot");
-
+message.innerHTML="Please fill all details and upload payment proof.";
 return;
 
 }
 
 
 
-let form = new FormData();
+message.innerHTML="Uploading payment proof...";
 
-form.append("file", file);
 
-form.append("upload_preset", "mdh_payment_upload");
+// Cloudinary upload
 
+let formData = new FormData();
+
+formData.append("file", proof);
+
+formData.append("upload_preset","mdh_payment_upload");
 
 
 let upload = await fetch(
-
-"https://api.cloudinary.com/v1_1/znemrfzm/image/upload",
-
+"https://api.cloudinary.com/v1_1/maverick_upload/image/upload",
 {
-
 method:"POST",
-
-body:form
-
+body:formData
 }
-
 );
-
 
 
 let imageData = await upload.json();
 
-
-
-if(!imageData.secure_url){
-
-alert("Image upload failed");
-
-return;
-
-}
+let imageUrl = imageData.secure_url;
 
 
 
-let order = {
+message.innerHTML="Saving order...";
 
 
-name: document.getElementById("name").value,
-
-
-phone: document.getElementById("phone").value,
-
-
-network: document.getElementById("network").value,
-
-
-bundle: document.getElementById("bundle").value,
-
-
-screenshot: imageData.secure_url,
-
-
-status: "Pending Payment",
-
-
-date: new Date().toLocaleString()
-
-
-};
-
-
+// Save order to Firebase
 
 let orderRef = push(ref(db,"orders"));
 
 
-await set(orderRef, order);
+await set(orderRef,{
+
+name:name,
+phone:phone,
+network:network,
+bundle:bundle,
+paymentProof:imageUrl,
+date:new Date().toString()
+
+});
 
 
 
-alert("Order submitted successfully!");
+message.innerHTML="Order received successfully!";
 
 
-
-let message =
-
-`🚀 Maverick Data Hub Order
-
-👤 Name: ${order.name}
-
-📱 Phone: ${order.phone}
-
-📶 Network: ${order.network}
-
-📦 Bundle: ${order.bundle}
-
-📸 Screenshot:
-${order.screenshot}
-
-🟡 Status: ${order.status}`;
-
+let whatsappText =
+`Hello Maverick Data Hub,%0A%0A`+
+`New Data Order%0A`+
+`Name: ${name}%0A`+
+`Phone: ${phone}%0A`+
+`Network: ${network}%0A`+
+`Bundle: ${bundle}%0A`+
+`Payment Proof: ${imageUrl}`;
 
 
 window.open(
-
-"https://wa.me/233546155096?text="
-
-+ encodeURIComponent(message)
-
+"https://wa.me/233546155096?text="+whatsappText,
+"_blank"
 );
-
 
 
 }
 
+  </script>
+  <div class="box">
+
+<h2>Available Data Bundles</h2>
+
+<p>📱 MTN Data</p>
+<p>1GB - Affordable Price</p>
+<p>2GB - Affordable Price</p>
+<p>5GB - Affordable Price</p>
+<p>10GB - Affordable Price</p>
+
+<hr>
+
+<h3>How to Order</h3>
+
+<p>
+1. Select your bundle<br>
+2. Make payment<br>
+3. Upload payment proof<br>
+4. Submit your order
+</p>
+
+</div>
 
 
-</script>
+<div class="box">
 
+<h2>Contact Maverick Data Hub</h2>
 
-<footer>
+<p>Fast delivery. Reliable service. ✅</p>
 
-<p>© 2026 Maverick Data Hub</p>
+<a href="https://wa.me/233546155096">
+<button>
+Chat on WhatsApp
+</button>
+</a>
 
-</footer>
+</div>
 
 
 </body>
-
 </html>
-
-
-<a class="float" href="https://wa.me/233546155096">
-
-💬
-
-</a>
+python -m http.server 8080
+  
