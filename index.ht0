@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Maverick Data Hub</title>
+
+<style>
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f2f2f2;
+  text-align: center;
+}
+
+h1 {
+  background: black;
+  color: white;
+  padding: 20px;
+}
+
+.box {
+  background: white;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+button {
+  background: green;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+a {
+  text-decoration: none;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>🔥 Maverick Data Hub 🔥</h1>
+
+<p>Fast & Affordable Data Bundles in Ghana 🇬🇭</p>
+
+<div class="box">
+<h2>🟡 MTN Data Bundles</h2>
+<p>1GB - GH₵5</p>
+<p>2GB - GH₵10</p>
+<p>5GB - GH₵25</p>
+
+<a href="https://wa.me/233546155096">
+<button>Buy MTN</button>
+</a>
+</div>
+
+<div class="box">
+<h2>🔴 Telecel Data Bundles</h2>
+<p>1GB - GH₵5</p>
+<p>5GB - GH₵25</p>
+
+<a href="https://wa.me/233546155096">
+<button>Buy Telecel</button>
+</a>
+</div>
+
+<div class="box">
+<h2>🔵 AirtelTigo Data Bundles</h2>
+<p>1GB - GH₵5</p>
+<p>5GB - GH₵25</p>
+
+<a href="https://wa.me/233546155096">
+<button>Buy AirtelTigo</button>
+</a>
+</div>
+
+</body>
+</html>

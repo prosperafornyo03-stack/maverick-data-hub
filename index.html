@@ -1,329 +1,180 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Maverick Data Hub</title>
 
 <style>
-
 body{
 font-family:Arial,sans-serif;
 background:#f5f5f5;
-text-align:center;
+margin:0;
 padding:20px;
 }
 
 .header{
 background:#0066ff;
 color:white;
-padding:25px;
+padding:20px;
 border-radius:15px;
+text-align:center;
 }
 
 .box{
 background:white;
 padding:20px;
 margin:20px auto;
+max-width:450px;
 border-radius:15px;
-max-width:500px;
-box-shadow:0 0 10px #ccc;
+box-shadow:0 0 10px rgba(0,0,0,.1);
 }
 
-input,select,button{
-width:90%;
+input,select{
+width:100%;
 padding:12px;
-margin:10px;
-border-radius:8px;
+margin:10px 0;
 border:1px solid #ccc;
+border-radius:8px;
+box-sizing:border-box;
 }
 
 button{
+width:100%;
+padding:12px;
 background:#0066ff;
 color:white;
 border:none;
+border-radius:8px;
 font-size:16px;
+cursor:pointer;
 }
 
-</style>
+button:hover{
+background:#004bb5;
+}
 
+.network{
+font-weight:bold;
+margin-top:20px;
+}
+
+.footer{
+text-align:center;
+margin-top:30px;
+color:#555;
+}
+</style>
 </head>
 
 <body>
 
 <div class="header">
-
 <h1>🔥 Maverick Data Hub 🔥</h1>
-
 <p>Fast & Affordable Data Bundles in Ghana 🇬🇭</p>
-
 </div>
-
 
 <div class="box">
 
 <h2>Buy Data</h2>
 
-<input id="name" placeholder="Your Name">
+<input id="name" type="text" placeholder="Your Name">
 
-<input id="phone" placeholder="Your Phone Number">
-
+<input id="phone" type="tel" placeholder="Your Phone Number">
 
 <select id="network">
-
 <option>MTN</option>
 <option>Telecel</option>
 <option>AirtelTigo</option>
-
 </select>
 
-
 <select id="bundle">
-
 <option>1GB - GH₵6.50</option>
 <option>2GB - GH₵11.50</option>
 <option>5GB - GH₵26.50</option>
 <option>10GB - GH₵36.50</option>
-
 </select>
-
 
 <input type="file" id="proof">
 
+<button onclick="placeOrder()">Place Order</button>
 
-<button onclick="placeOrder()">
-Place Order
-</button>
-
-
-<p id="message"></p>
-
-</div>
-
-
-<div class="box">
-
-<h2>Payment Details</h2>
-
-<p>Pay via Mobile Money</p>
+<h3>Payment Details</h3>
 
 <p><b>Name:</b> Afornyo Prosper</p>
-
-<p><b>Number:</b> 0546155096</p>
-
-<p>After payment, upload your screenshot and click Place Order.</p>
+<p><b>MoMo Number:</b> 0546155096</p>
 
 </div>
-
 
 <div class="box">
 
 <h2>Available Data Bundles</h2>
 
-<p>🟡 MTN</p>
+<p class="network">🟡 MTN</p>
 <p>1GB - GH₵6.50</p>
 <p>2GB - GH₵11.50</p>
 <p>5GB - GH₵26.50</p>
 <p>10GB - GH₵36.50</p>
 
-
-<p>🔴 Telecel</p>
+<p class="network">🔴 Telecel</p>
 <p>1GB - GH₵6.50</p>
 <p>5GB - GH₵26.50</p>
 
-
-<p>🔵 AirtelTigo</p>
+<p class="network">🔵 AirtelTigo</p>
 <p>1GB - GH₵6.50</p>
 <p>5GB - GH₵26.50</p>
 
-</div>
-<div class="box">
+</div><div class="box">
 
 <h2>How To Order</h2>
 
 <p>1. Select your bundle</p>
-<p>2. Make payment</p>
-<p>3. Upload payment proof</p>
-<p>4. Submit your order</p>
+<p>2. Send payment to the MoMo number above</p>
+<p>3. Upload your payment screenshot</p>
+<p>4. Click <b>Place Order</b></p>
 
 </div>
 
-
-<div class="box">
-
-<h2>Contact Maverick Data Hub</h2>
-
+<div class="footer">
+<p>Contact Maverick Data Hub</p>
 <p>Fast delivery. Reliable service. ✅</p>
-
-<a href="https://wa.me/233546155096" target="_blank">
-
-<button>
-Chat on WhatsApp
-</button>
-
-</a>
-
 </div>
 
+<script>
+function placeOrder(){
 
-<script type="module">
-
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-
-import { getDatabase, ref, push, set } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
-
-
-const firebaseConfig = {
-
-apiKey: "AIzaSyDVMhdWshHyn2sRFKtiF1mu9rR82PzRXJM",
-
-authDomain: "maverick-data-hub-bc904.firebaseapp.com",
-
-databaseURL: "https://maverick-data-hub-bc904-default-rtdb.firebaseio.com",
-
-projectId: "maverick-data-hub-bc904",
-
-storageBucket: "maverick-data-hub-bc904.firebasestorage.app",
-
-messagingSenderId: "161516394504",
-
-appId: "1:161516394504:web:2c95b5fb969628452099bd"
-
+const order = {
+name: document.getElementById("name").value,
+phone: document.getElementById("phone").value,
+network: document.getElementById("network").value,
+amount: document.getElementById("bundle").value,
+status: "Pending"
 };
 
-
-const app = initializeApp(firebaseConfig);
-
-const db = getDatabase(app);
-
-
-window.placeOrder = async function(){
-
-let name = document.getElementById("name").value;
-
-let phone = document.getElementById("phone").value;
-
-let network = document.getElementById("network").value;
-
-let bundle = document.getElementById("bundle").value;
-
-let proof = document.getElementById("proof").files[0];
-
-let message = document.getElementById("message");
-
-
-if(!name || !phone || !proof){
-
-message.innerHTML="Please fill all details and upload payment proof.";
-
+if(order.name==="" || order.phone===""){
+alert("Please enter your name and phone number.");
 return;
-
 }
 
-
-try{
-
-message.innerHTML="Uploading payment proof...";
-
-
-let formData = new FormData();
-
-formData.append("file",proof);
-
-formData.append("upload_preset","mdh_payment_upload");
-
-
-let upload = await fetch(
-
-"https://api.cloudinary.com/v1_1/znemrfzm/image/upload",
-
-{
-
+fetch("/order",{
 method:"POST",
-
-body:formData
-
-}
-
-);
-
-
-let imageData = await upload.json();
-
-
-let imageUrl = imageData.secure_url;
-
-
-if(!imageUrl){
-
-throw new Error("Image upload failed");
-
-}
-
-
-message.innerHTML="Saving order...";
-
-
-let order = push(ref(db,"orders"));
-
-
-await set(order,{
-
-name:name,
-
-phone:phone,
-
-network:network,
-
-bundle:bundle,
-
-paymentProof:imageUrl,
-
-date:new Date().toString()
-
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify(order)
+})
+.then(response=>response.text())
+.then(()=>{
+alert("Order placed successfully ✅");
+document.getElementById("name").value="";
+document.getElementById("phone").value="";
+})
+.catch(()=>{
+alert("Failed to place order.");
 });
 
-
-message.innerHTML="Order sent successfully ✅";
-
-
-window.open(
-
-"https://wa.me/233546155096?text="+
-
-"New Order%0AName: "+name+
-
-"%0APhone: "+phone+
-
-"%0ANetwork: "+network+
-
-"%0ABundle: "+bundle+
-
-"%0AProof: "+imageUrl,
-
-"_blank"
-
-);
-
-
 }
-
-catch(error){
-
-message.innerHTML="Error: "+error.message;
-
-console.log(error);
-
-}
-
-
-}
-
-
 </script>
-
 
 </body>
 </html>
