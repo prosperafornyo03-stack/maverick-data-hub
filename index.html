@@ -7,7 +7,7 @@
 
 <style>
 body{
-font-family:Arial;
+font-family:Arial,sans-serif;
 background:#f5f5f5;
 text-align:center;
 padding:20px;
@@ -32,7 +32,7 @@ button{
 background:#0066ff;
 color:white;
 padding:12px 25px;
-border:none;
+border:0;
 border-radius:10px;
 }
 
@@ -49,9 +49,9 @@ right:20px;
 bottom:20px;
 background:#25D366;
 color:white;
+font-size:25px;
 padding:15px;
 border-radius:50%;
-font-size:25px;
 }
 </style>
 
@@ -59,118 +59,62 @@ font-size:25px;
 
 <body>
 
-
 <div class="header">
-
 <h1>🚀 Maverick Data Hub</h1>
-
 <p>Fast • Affordable • Reliable Data Bundles</p>
-
 </div>
 
-
-
 <div class="box">
-
-<h3>📱 MTN • Telecel • AirtelTigo</h3>
-
+<p>📱 MTN • Telecel • AirtelTigo</p>
 <p>💯 Your trusted data plug</p>
-
 </div>
-
-
 
 <div class="box">
-
 <h2>🔥 SPECIAL OFFER 🔥</h2>
-
 <p>⚡ Fast delivery • 💯 Trusted service</p>
-
 </div>
-
-
 
 <div class="box">
 
 <h2>Our Data Packages 📶</h2>
 
-
 <p>1GB Data - GH₵5</p>
-
 <p>2GB Data - GH₵10</p>
-
 <p>5GB Data - GH₵20</p>
-
 <p>10GB Data - GH₵35</p>
 
-
 </div>
-
-
-
 
 <div class="box">
 
 <h2>📝 Place Your Order</h2>
 
-
 <input id="name" placeholder="Enter your name">
-
 
 <input id="phone" placeholder="Enter phone number">
 
-
-
 <select id="network">
-
 <option>MTN</option>
-
 <option>Telecel</option>
-
 <option>AirtelTigo</option>
-
 </select>
-
-
 
 <select id="bundle">
-
 <option>1GB Data - GH₵5</option>
-
 <option>2GB Data - GH₵10</option>
-
 <option>5GB Data - GH₵20</option>
-
 <option>10GB Data - GH₵35</option>
-
 </select>
 
-
-
-<br>
-
-📸 Upload Payment Screenshot
-
-<br><br>
-
+<p>📸 Upload Payment Screenshot</p>
 
 <input type="file" id="image" accept="image/*">
 
-
 <br><br>
 
-
-<button onclick="sendOrder()">
-Submit Order
-</button>
-
+<button onclick="sendOrder()">Submit Order</button>
 
 </div>
-
-
-
-
-
 <div class="box">
 
 <h2>💰 Payment Details</h2>
@@ -181,101 +125,49 @@ Submit Order
 
 <p>Number: 0546155096</p>
 
+<p>After payment, upload screenshot and submit your order.</p>
 
 </div>
 
 
+<div class="box">
 
+<h2>📦 Order Status</h2>
+
+<p>🟡 Pending Payment</p>
+
+<p>🔵 Payment Confirmed</p>
+
+<p>🟢 Data Delivered</p>
+
+</div>
+
+
+<div class="box">
+
+<h2>⭐ Why Choose Maverick Data Hub?</h2>
+
+<p>✅ Fast and reliable data bundles</p>
+
+<p>✅ Affordable prices</p>
+
+<p>✅ Quick WhatsApp support</p>
+
+</div>
 
 
 <a class="float" href="https://wa.me/233546155096">
-
 💬
-
 </a>
 
 
 
-
-
 <script>
+
 async function sendOrder(){
 
 let file = document.getElementById("image").files[0];
 
-if(!file){
-alert("Please upload payment screenshot");
-return;
-}
-
-let form = new FormData();
-
-form.append("file", file);
-form.append("upload_preset", "mdh_payment_upload");
-
-
-try {
-
-let upload = await fetch(
-"https://api.cloudinary.com/v1_1/znemrfzm/image/upload",
-{
-method:"POST",
-body:form
-}
-);
-
-
-let data = await upload.json();
-
-console.log(data);
-
-
-if(data.secure_url){
-
-alert("Screenshot uploaded successfully!");
-
-let message =
-`🚀 Maverick Data Hub Order
-
-👤 Name: ${document.getElementById("name").value}
-
-📱 Phone: ${document.getElementById("phone").value}
-
-📶 Network: ${document.getElementById("network").value}
-
-📦 Bundle: ${document.getElementById("bundle").value}
-
-📸 Screenshot:
-${data.secure_url}`;
-
-
-window.open(
-"https://wa.me/233546155096?text=" + encodeURIComponent(message)
-);
-
-
-}else{
-
-alert("Cloudinary Error: " + JSON.stringify(data));
-
-}
-
-}
-
-catch(error){
-
-alert("Error: " + error.message);
-
-}
-
-}
-</script>
-
-async function sendOrder(){
-
-
-let file=document.getElementById("image").files[0];
-
 
 if(!file){
 
@@ -286,22 +178,18 @@ return;
 }
 
 
+let formData = new FormData();
 
-let form=new FormData();
+formData.append("file", file);
 
-
-form.append("file",file);
-
-
-form.append("upload_preset","mdh_payment_upload");
-
+formData.append("upload_preset","mdh_payment_upload");
 
 
 
 try{
 
 
-let upload=await fetch(
+let response = await fetch(
 
 "https://api.cloudinary.com/v1_1/znemrfzm/image/upload",
 
@@ -309,7 +197,7 @@ let upload=await fetch(
 
 method:"POST",
 
-body:form
+body:formData
 
 }
 
@@ -317,16 +205,18 @@ body:form
 
 
 
-let data=await upload.json();
+let data = await response.json();
 
+
+
+console.log(data);
 
 
 
 if(data.secure_url){
 
 
-
-let message=
+let message =
 
 `🚀 Maverick Data Hub Order
 
@@ -339,13 +229,16 @@ let message=
 📦 Bundle: ${document.getElementById("bundle").value}
 
 📸 Screenshot:
-${data.secure_url}`;
+${data.secure_url}
 
+I have placed my order.`;
 
 
 window.open(
 
-"https://wa.me/233546155096?text="+encodeURIComponent(message)
+"https://wa.me/233546155096?text="
+
++ encodeURIComponent(message)
 
 );
 
@@ -353,22 +246,25 @@ window.open(
 
 }else{
 
-alert("Upload failed");
+
+alert("Cloudinary upload failed");
+
+console.log(data);
+
 
 }
 
 
 
-}
+}catch(error){
 
-catch(e){
 
 alert("Upload error");
 
-console.log(e);
+console.log(error);
+
 
 }
-
 
 
 }
@@ -377,5 +273,13 @@ console.log(e);
 </script>
 
 
+<footer>
+
+<p>© 2026 Maverick Data Hub</p>
+
+</footer>
+
+
 </body>
-  </html>
+
+</html>
